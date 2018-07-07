@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+npm-debug.log
+.editorconfig
+shop/dist/
+shop/node_modules/
+shop/.idea/
+shop/demo/
+cms/node_modules/
+cms/dist/
+cms/.idea/
+cms/demo/
+.project
+
+.idea
+.node_modules
+.dist
