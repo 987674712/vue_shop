@@ -50,28 +50,36 @@ export default {
         choseBool: false
       }];
 
-
-      MessageBox
-        .confirm
-        (
-        `商品名称:${product[0].title}</br>` +
-        `价格:${product[0].price}</br>` +
-        `款式:${product[0].size}</br>` +
-        `规格:${product[0].col}</br>` +
-        `商品ID:${product[0].id}</br>`
-        )
-        .then(action => {      //点击成功执行这里的函数
-          this.$store.dispatch('setPayShop',product)
-          this.$router.push({ name: '支付页' })
-          // this.$store.dispatch('setLocalCount', true);
-          // this.$store.dispatch('addCarList', product);
-
-          // Toast({
-          //   message: '添加成功',
-          //   duration: 1000
-          // });
+      if (this.Local.getLocal('user').mobile !== ''){
+        MessageBox
+          .confirm
+          (
+            `商品名称:${product[0].title}</br>` +
+            `价格:${product[0].price}</br>` +
+            `款式:${product[0].size}</br>` +
+            `规格:${product[0].col}</br>` +
+            `商品ID:${product[0].id}</br>`
+          )
+          .then(action => {      //点击成功执行这里的函数
+            this.$store.dispatch('setPayShop',product)
+            this.$router.push({ name: '支付页' })
+          }, function (err) {
+          });
+      }else {
+        MessageBox
+          .confirm(
+            `请先绑定手机号码`
+          ) .then(action => {
+          this.$router.push({
+            path:'/bindMobile'
+          })
         }, function (err) {
-        });
+
+          console.log('用户点击取消')
+          //点击取消执行这里的函数
+        })
+      }
+
     }
   }
 }

@@ -94,6 +94,7 @@
   }
 
   .ml_shebei {
+    padding-bottom: 50px;
     border-top: 1px solid #999999;
     .shebei {
       position: relative;
@@ -120,5 +121,6 @@
   .add {
     position: fixed;
     right: 20px;bottom: 18vw;width: 50px;height: 50px;
+    background-color: white;z-index: 9999;border-radius: 50%;
   }
 </style>

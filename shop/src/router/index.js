@@ -12,13 +12,19 @@ const Detail = resolve => require(['@/views/Detail.vue'], resolve)
 const Search = resolve => require(['@/views/Search.vue'], resolve)
 const Pay = resolve => require(['@/components/car/pay/pay.vue'], resolve)
 const Login = resolve => require(['@/views/login.vue'], resolve)
+const Order = resolve => require(['@/views/Order.vue'], resolve)
+const Address = resolve => require(['@/views/Address.vue'], resolve)
+const bindMobile = resolve => require(['@/views/bindMobile.vue'], resolve)
 
 
 export default new Router({
   routes: [{
       path: '/',
       name: '首页',
-      component: Index
+      component: Index,
+    meta: {
+      requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+    },
     }, {
       path: '/category',
       name: '分类页',
@@ -33,7 +39,7 @@ export default new Router({
       name: '购物车页',
       component: Car
     }, {
-      path: '/car/pay',
+      path: '/car/pay/:id',
       name: '支付页',
       component: Pay
     },
@@ -45,7 +51,7 @@ export default new Router({
            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
        },
     }, {
-      path: '/detail',
+      path: '/detail/:id',
       name: '详情页',
       component: Detail
     }, {
@@ -56,6 +62,18 @@ export default new Router({
       path: '/login',
       name: '登录页',
       component: Login
+    },{
+      path: '/order',
+      name: '订单页',
+      component: Order
+    },{
+      path: '/address',
+      name: '地址页',
+      component: Address
+    },{
+      path: '/bindMobile',
+      name: '手机绑定页',
+      component: bindMobile
     }
   ]
 })

@@ -3,12 +3,15 @@
   <div class="car">
       <header class="header">
           <div class="header-icon">
-              <span class="icon2-user"></span>
+            <img :src="portrait" alt="">
           </div>
-          <span>登录/注册</span>
+          <span>您好，{{name}}<br/></span>
+          <span>推荐人：赵一</span>
+
+
       </header>
       <div class="main">
-          <router-link class="my-indent" :to="{ name: ''}">
+          <router-link class="my-indent" :to="{ name: '订单页'}">
               <span class="my-indent-left">我的订单</span>
               <div class="my-indent-right">
                   <span>全部订单</span>
@@ -16,31 +19,31 @@
               </div>
           </router-link>
 
-          <section class="my-pay">
-              <router-link :to="{ name: ''}">
-                  <span class="icon2-money"></span>
-                  <p>代付款</p>
-              </router-link>
-              <router-link :to="{ name: ''}">
-                  <span class="icon2-thecar"></span>
-                  <p>待收货</p>
-              </router-link>
-              <router-link :to="{ name: ''}">
-                  <span class="icon2-fixed"></span>
-                  <p>维修</p>
-              </router-link>
+          <!--<section class="my-pay">-->
+              <!--<router-link :to="{ name: ''}">-->
+                  <!--<span class="icon2-money"></span>-->
+                  <!--<p>代付款</p>-->
+              <!--</router-link>-->
+              <!--<router-link :to="{ name: ''}">-->
+                  <!--<span class="icon2-thecar"></span>-->
+                  <!--<p>待收货</p>-->
+              <!--</router-link>-->
+              <!--<router-link :to="{ name: ''}">-->
+                  <!--<span class="icon2-fixed"></span>-->
+                  <!--<p>维修</p>-->
+              <!--</router-link>-->
 
-          </section>
+          <!--</section>-->
 
           <section class="my-vip">
-            <router-link class="my-vip-top ho" :to="{ name: ''}" >
+            <router-link class="my-vip-top ho" :to="{ name: '地址页'}" >
               <div class="my-vip-top-div">
-                <span class="icon2-vip">
+                <span class="icon2-thecar">
                     <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>
                 </span>
               </div>
               <p>
-                <span>会员福利</span><i class="icon-go"></i>
+                <span>地址管理</span><i class="icon-go"></i>
               </p>
             </router-link>
             <router-link class="my-vip-bottom ho" :to="{ name: ''}">
@@ -48,12 +51,11 @@
                 <span class="icon2-money"></span>
               </div>
               <p>
-                <span>我的优惠</span><i class="icon-go"></i>
+                <span>我的邀请码</span><i class="icon-go"></i>
               </p>
             </router-link>
           </section>
-
-          <!--<section class="my-service">-->
+          <!--<section class="my-service" @click="loginOut">-->
               <!--<router-link class="my-service-top" :to="{ name: ''}">-->
                   <!--<div>-->
                     <!--<span class="icon2-service">-->
@@ -74,7 +76,7 @@
               <!--</router-link>-->
           <!--</section>-->
 
-          <section class="my-settle">
+          <!--<section class="my-settle">-->
               <!--<router-link :to="{ name: ''}" class="my-settle-top">-->
                   <!--<div>-->
                     <!--<span class="icon2-f"></span>-->
@@ -83,15 +85,18 @@
                     <!--<span>F码通道</span><i class="icon-go"></i>-->
                   <!--</p>-->
               <!--</router-link>-->
-              <router-link :to="{ name: ''}" class="my-settle-bottom">
-                <div>
-                  <span class="icon2-settle"></span>
-                </div>
-                <p>
-                  <span>设置</span><i class="icon-go"></i>
-                </p>
-              </router-link>
-          </section>
+              <!--<router-link to="" class="my-settle-bottom">-->
+                <!--<div>-->
+                  <!--<span class="icon2-settle"></span>-->
+                <!--</div>-->
+                <!--<p>-->
+                  <!--<span>退出登录</span><i class="icon-go"></i>-->
+                <!--</p>-->
+              <!--</router-link>-->
+            <!--<div class="login_out">-->
+
+            <!--</div>-->
+          <!--</section>-->
       </div>
       <!--<v-baseline></v-baseline>-->
       <v-footer></v-footer>
@@ -99,7 +104,6 @@
 </template>
 
 <script>
-  // import * as mockData from '@/http/mock.js' //模拟数据
 
   import Baseline from '@/common/_baseline.vue'
   import Footer from '@/common/_footer.vue'
@@ -107,6 +111,37 @@
     components: {
       'v-baseline': Baseline,
       'v-footer': Footer
+    },
+    data() {
+      return {
+        phone:localStorage.getItem('phone'),
+        name:this.Local.getLocal('user').nickName,
+        portrait:this.Local.getLocal('user').portrait
+      }
+    },
+    methods: {
+      loginOut:function () {
+        localStorage.clear()
+        this.$router.push({ path: '/login'})
+      }
+    },
+    beforeCreate(){
+      // this.$store.dispatch('setDatas',this.$route.params.id);
+      this.$api({
+        method: 'get',
+        url: '/api/v1/user/profile',
+        params: {
+          userId:this.Local.getLocal('user').id
+        },
+      }).then((response) => {
+        this.datas = response.data.data
+        localStorage.setItem('nickName',response.data.data.nickName)
+        localStorage.setItem('address',response.data.data.address)
+        this.swiper = [response.data.data.icon]
+        // console.log(JSON.stringify(response.data.section4))
+      }).catch(function(error) {
+        // alert(error)
+      })
     }
   }
 </script>
@@ -149,6 +184,9 @@
           &::before {
             color: #ffffff;
           }
+        }
+        img{
+          width: 100%;height: 100%;border-radius: 50%;margin-top: -3vw;
         }
       }
       >span {
@@ -223,7 +261,15 @@
           }
         }
       }
-
+      .my-service{
+        position: relative;
+        .login_out{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+        }
+      }
       .my-vip,.my-service,.my-settle {
         width: 100%;
         .mt();

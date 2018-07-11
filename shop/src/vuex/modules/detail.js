@@ -91,10 +91,10 @@ let vm = new Vue({});
 const actions = {
 
 // 父组件发送异步请求
-  setDatas({commit}) {
+  setDatas({commit},id) {
     vm.$api({
-        method:'post',
-        url:"/detail"
+        method:'get',
+        url:"/api/v1/product/"+id
       }).then(response=>{
         commit('SET_DATAS',response.data);
       })

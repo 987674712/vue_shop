@@ -136,15 +136,15 @@
     },
 
     beforeCreate() {
-      this.$api({
-        method: 'post',
-        url: '/index'
-      }).then((response) => {
-        this.datas = response.data;
-        console.log(JSON.stringify(response.data.section4))
-      }).catch(function (error) {
-        alert(error)
-      })
+      // this.$api({
+      //   method: 'get',
+      //   url: ''
+      // }).then((response) => {
+      //   this.datas = response.data;
+      //   console.log(JSON.stringify(response.data.section4))
+      // }).catch(function (error) {
+      //   // alert(error)
+      // })
     }
   }
 </script>

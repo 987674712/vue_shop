@@ -11,8 +11,8 @@
       <!--设备管理-->
     <!--</mt-tab-item>-->
     <mt-tab-item id="购物车页">
-      <i slot="icon" class="icon-car"></i>
-      财富
+      <i slot="icon" class="icon-category"></i>
+      设备管理
     </mt-tab-item>
     <mt-tab-item id="用户页">
       <i slot="icon" class="icon-user"></i>

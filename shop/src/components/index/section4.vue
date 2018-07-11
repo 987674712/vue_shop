@@ -6,14 +6,13 @@
     </h2>
     <ul class="section4-list">
       <li v-for="k in list" :key='k.id'>
-        <router-link :to="{name:'详情页'}">
-          <img v-lazy="k.imgPath">
-          <p>{{k.intro}}</p>
+        <router-link :to="{path:'/detail/'+k.id}">
+          <img v-lazy="k.icon">
+          <p>{{k.desp}}</p>
         </router-link>
-        <h3>{{k.title}}</h3>
-        <span>￥{{k.price}}</span>
+        <h3>{{k.name}}</h3>
+        <span>￥{{k.amount}}</span>
       </li>
-
     </ul>
     <!--<router-link :to="{name:'分类页'}" class="section4-banner">-->
       <!--<img v-lazy="banner">-->
@@ -25,10 +24,10 @@
 import { Lazyload } from 'mint-ui';
 export default {
   props: {
-    banner: {
-      type: String,
-      default: ''
-    },
+    // banner: {
+    //   type: String,
+    //   default: ''
+    // },
     list: {
       type: Array,
       default: function () {
@@ -67,10 +66,6 @@ export default {
 
   .section4-list {
     width: 100%;
-    display: -ms-flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -81,6 +76,7 @@ export default {
       width: 50%;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
+      float: left;
       padding: 0 3vw;
       > a {
         display: block;
@@ -88,7 +84,7 @@ export default {
         position: relative;
         img {
           display: block;
-          width: 100%;
+          height: 87.8vw;
         }
         p {
           overflow: hidden;

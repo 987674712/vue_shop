@@ -4,7 +4,6 @@
       <img :src="k.imgSrc">
     </div>
   </section>
-
 </template>
 
 <script>

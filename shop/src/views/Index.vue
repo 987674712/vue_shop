@@ -2,12 +2,12 @@
   <!-- 在首页父组件发送http请求,后将数据通过props传递给子组件,可减少请求次数,减少服务器压力 -->
   <div class="index">
     <v-header/>
-    <v-swiper :swiperData="datas.swiper"/>
+    <v-swiper :swiperData="datas.data"/>
     <v-service/>
     <!--<v-section1 :list="datas.section1.list" :banner='datas.section1.banner'/>-->
     <!--<v-section2 :list="datas.section2.list" :banner='datas.section2.banner'/>-->
     <!--<v-section3/>-->
-    <v-section4 :list="datas.section4.list" :banner='datas.section4.banner'/>
+    <v-section4 :list="datas.data" :banner='datas.data'/>
     <!--<v-baseline/>-->
     <v-footer/>
   </div>
@@ -23,7 +23,6 @@ import Section3 from '@/components/index/section3.vue'
 import Section4 from '@/components/index/section4.vue'
 import Baseline from '@/common/_baseline.vue'
 import Footer from '@/common/_footer.vue'
-import index from '@/http/mock.js' //模拟数据
 export default {
   components: {
     'v-header': Header,
@@ -51,13 +50,13 @@ export default {
 
   beforeCreate() {
     this.$api({
-      method: 'post',
-      url: '/index'
+      method: 'get',
+      url: '/api/v1/product'
     }).then((response) => {
       this.datas = response.data;
-      console.log(JSON.stringify(response.data.section4))
+      // console.log(JSON.stringify(response.data.section4))
     }).catch(function(error) {
-      alert(error)
+      // alert(error)
     })
   }
 }

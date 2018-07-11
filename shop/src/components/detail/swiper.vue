@@ -2,20 +2,20 @@
     <div class="swiper">
       <mt-swipe :auto="4000">
         <mt-swipe-item v-for="k in swiper" :key="k.id">
-           <img :src="k.imgSrc">
+           <img :src="k.icon">
         </mt-swipe-item>
       </mt-swipe>
       <div class="back" @click="$router.go(-1)">
         <span class="icon-go"></span>
       </div>
     </div>
-
 </template>
 
 <script>
 export default {
   computed: {
     swiper () {
+      console.log(this.$store.state.detail.productDatas.swiper)
       return this.$store.state.detail.productDatas.swiper
     }
   }
