@@ -83,11 +83,7 @@
               responseElement.push(response.data.data[i])
             }
             this.province = values[0].name
-            this.city = responseElement[0].name
-            console.log(values[0].name, values[1].name)
-            if (values[0].name !== this.province) {
-              this.city = values[1].name
-            }
+            this.city = values[1].name
             if (this.firstGet) {
               this.$api({
                 method: 'get',
