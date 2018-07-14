@@ -217,8 +217,6 @@
           url: '/api/v1/user/profile?userId=' + this.GetQueryString('userId')
         }).then((response) => {
           this.Local.setLocal('user',response.data.data)
-          localStorage.setItem('nickName', response.data.data.nickName)
-          localStorage.setItem('address', response.data.data.address)
           this.$router.replace({
             path: '/'
           })

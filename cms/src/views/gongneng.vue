@@ -17,6 +17,13 @@
           <i class="icon-go"></i>
         </div>
       </router-link>
+      <router-link class="my-indent" :to="{ name: ''}">
+        <span class="my-indent-left">测试工具</span>
+        <div class="my-indent-right">
+          <span></span>
+          <i class="icon-go"></i>
+        </div>
+      </router-link>
     </div>
     <!--<v-baseline></v-baseline>-->
     <v-footer></v-footer>
