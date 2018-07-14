@@ -54,8 +54,8 @@
         province: '',
         city: '',
         firstGet: true,
-        mobile: this.Local.getLocal('user').mobile,
-        nickName: this.Local.getLocal('user').nickName
+        mobile: "",
+        nickName: ""
       }
     },
     methods: {

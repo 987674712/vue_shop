@@ -5,8 +5,7 @@
           <div class="header-icon">
             <img :src="portrait" alt="">
           </div>
-          <span>您好，{{name}}<br/></span>
-          <span>推荐人：赵一</span>
+          <span>您好，{{name}}<br>推荐人：赵一</span>
 
 
       </header>

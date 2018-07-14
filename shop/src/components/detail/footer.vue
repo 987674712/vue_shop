@@ -49,7 +49,7 @@ export default {
         imgPath: this.$store.state.detail.productDatas.swiper[0].imgSrc,
         choseBool: false
       }];
-
+      console.log(this.Local.getLocal('user').mobile)
       if (this.Local.getLocal('user').mobile !== ''){
         MessageBox
           .confirm

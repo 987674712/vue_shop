@@ -10,9 +10,9 @@
       <!--<i slot="icon" class="icon-category"></i>-->
       <!--设备管理-->
     <!--</mt-tab-item>-->
-    <mt-tab-item id="购物车页">
+    <mt-tab-item id="功能页">
       <i slot="icon" class="icon-category"></i>
-      设备管理
+      功能
     </mt-tab-item>
     <mt-tab-item id="用户页">
       <i slot="icon" class="icon-user"></i>
@@ -49,8 +49,8 @@
           this.selected = '分类页';
 
           break;
-        case '购物车页':
-          this.selected = '购物车页';
+        case '功能页':
+          this.selected = '功能页';
 
           break;
         case '用户页':

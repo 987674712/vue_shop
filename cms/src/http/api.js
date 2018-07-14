@@ -4,19 +4,30 @@ import router from '../router'
 
 const api = axios.create();
 api.defaults.baseURL = 'http://zhijin.97reader.com';
-api.defaults.timeout = 5000;
-api.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-api.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest'
+// api.defaults.params = {userId:localStorage.getItem('userId')};
+// api.defaults.data = {userId:localStorage.getItem('userId')};
+// api.defaults.timeout = 5000;
+// api.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// api.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest'
 
 // 请求拦截
 api.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
-    store.commit('SET_LOADING',true);
+    // store.commit('SET_LOADING',true);
     // 如果有token,添加到请求报文 后台会根据该报文返回status
-    if(store.state.login.token) {
-      config.headers.Authorization = `token ${store.state.login.token}`;
+    // if(store.state.login.token) {
+    //   config.headers.Authorization = `token ${store.state.login.token}`;
+    // }
+  if(config.method === 'get'){
+    if(localStorage.getItem('user')){
+      config.params = Object.assign({userId:JSON.parse(localStorage.getItem('user')).id},config.params)
     }
-
+  }
+  if(config.method === 'post'){
+    if(localStorage.getItem('user')){
+      config.data = Object.assign({userId:JSON.parse(localStorage.getItem('user')).id},config.data)
+    }
+  }
     return config;
 
   }, function (error) {
@@ -42,7 +53,7 @@ api.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     store.commit('SET_LOADING',false);
 
-    if(errore.response) {
+    if(error.response) {
 
       if(error.response.status== 401) {
           // 如果返回401 即没有权限，跳到登录页重新登录

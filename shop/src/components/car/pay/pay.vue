@@ -27,7 +27,7 @@
                 <span>&nbsp;&nbsp;{{count}}&nbsp;&nbsp;</span>
                 <mt-button size="small" @click="addCount">+</mt-button>
               </p>
-              <p>{{datas.amount}} 元</p>
+              <p>{{datas.amount/100}} 元</p>
             </div>
           </a>
         </li>
@@ -40,7 +40,7 @@
         稍后可到我的订单查看状态
       </div>
     </div>
-    <h3 class="pay-allpay" v-if="!confirm">总需要支付 : <i>￥</i><span>{{allpay}}</span></h3>
+    <h3 class="pay-allpay" v-if="!confirm">总需要支付 : <i>￥</i><span>{{allpay/100}}</span></h3>
     <footer class="pay-footer" v-if="!confirm" ontouchstrat="" @click="payConfirm">
       <span>立即支付</span>
     </footer>

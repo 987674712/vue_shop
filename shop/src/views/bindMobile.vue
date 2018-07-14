@@ -74,12 +74,12 @@
               data: data
             }).then((response) => {
               if (response.data.code === 1000) {
-                Toast('绑定成功');
                 // 获取用户资料
                 this.$api({
                   method: 'get',
-                  url: '/api/v1/user/profile?userId=' + response.data.userId
+                  url: '/api/v1/user/profile'
                 }).then((response) => {
+                  Toast('绑定成功');
                   this.Local.setLocal('user',response.data.data);
                   this.$router.go(-1)
                 })

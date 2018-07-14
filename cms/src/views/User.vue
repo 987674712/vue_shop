@@ -5,7 +5,7 @@
           <div class="header-icon">
               <span class="icon2-user"></span>
           </div>
-          <span>您好，18888888888</span>
+          <span>您好，18888888888<br/>推荐人:小李子</span>
       </header>
       <div class="main">
           <router-link class="my-indent" :to="{ name: ''}">
@@ -75,7 +75,6 @@
 </template>
 
 <script>
-  // import * as mockData from '@/http/mock.js' //模拟数据
 
   import Baseline from '@/common/_baseline.vue'
   import Footer from '@/common/_footer.vue'

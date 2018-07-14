@@ -11,7 +11,7 @@
           <p>{{k.desp}}</p>
         </router-link>
         <h3>{{k.name}}</h3>
-        <span>￥{{k.amount}}</span>
+        <span>￥{{k.amount/100}}</span>
       </li>
     </ul>
     <!--<router-link :to="{name:'分类页'}" class="section4-banner">-->

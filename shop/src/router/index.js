@@ -15,6 +15,7 @@ const Login = resolve => require(['@/views/login.vue'], resolve)
 const Order = resolve => require(['@/views/Order.vue'], resolve)
 const Address = resolve => require(['@/views/Address.vue'], resolve)
 const bindMobile = resolve => require(['@/views/bindMobile.vue'], resolve)
+const orderDetail = resolve => require(['@/views/orderDetail.vue'], resolve)
 
 
 export default new Router({
@@ -74,6 +75,10 @@ export default new Router({
       path: '/bindMobile',
       name: '手机绑定页',
       component: bindMobile
+    },{
+      path: '/orderDetail/:id',
+      name: '订单详情页',
+      component: orderDetail
     }
   ]
 })

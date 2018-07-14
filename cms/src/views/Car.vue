@@ -1,8 +1,9 @@
 <template lang="html">
 
   <div class="car">
-    <mt-header title="设备管理">
-    </mt-header>
+    <v-header class="header">
+      <h1 slot="title">功能列表</h1>
+    </v-header>
     <router-link :to="{ name: '管理页'}"  class="section1-banner">
       <img class="add" src="../image/add.png" alt="">
     </router-link>
@@ -53,15 +54,17 @@
         </div>
       </router-link>
     </div>
-    <v-footer/>
+    <!--<v-footer/>-->
   </div>
 </template>
 
 <script>
   import Footer from '@/common/_footer.vue'
+  import Header from '@/common/_header.vue'
 
   export default {
     components: {
+      'v-header': Header,
       'v-footer': Footer
     },
 

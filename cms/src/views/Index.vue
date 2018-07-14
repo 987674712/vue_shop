@@ -2,18 +2,20 @@
   <!-- 在首页父组件发送http请求,后将数据通过props传递给子组件,可减少请求次数,减少服务器压力 -->
   <div class="index">
     <v-header/>
-    <div class="top_yue">
-      今日收益（元）<br/>
-      38.8元<br/>
-      余额：4779元
-    </div>
+    <router-link class="my-indent" :to="{ name: '收益页'}">
+      <div class="top_yue">
+        今日收益（元）<br/>
+        38.8元<br/>
+        余额：4779元
+      </div>
+    </router-link>
     <div class="top_all">
       <div>累计收益：17892元</div>
       <div>昨日收益：123元</div>
     </div>
     <div class="title">设备列表（12台）</div>
     <div class="ml_shebei">
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -22,7 +24,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -31,7 +33,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -40,7 +42,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -49,7 +51,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -58,7 +60,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -67,7 +69,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -76,7 +78,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -85,7 +87,7 @@
         </span>
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
           <p>今日收益：3元 有纸巾》</p>
@@ -109,7 +111,8 @@
   import Section4 from '@/components/index/section4.vue'
   import Baseline from '@/common/_baseline.vue'
   import Footer from '@/common/_footer.vue'
-  import index from '@/http/mock.js' //模拟数据
+  import {Toast, Picker} from 'mint-ui'
+
   export default {
     components: {
       'v-header': Header,
@@ -178,26 +181,27 @@
     }
   }
 
-  .title{
+  .title {
     line-height: 2.5em;
     border-bottom: 1px solid #999999;
   }
-  .ml_shebei{
-    .shebei{
+
+  .ml_shebei {
+    .shebei {
       position: relative;
       overflow: hidden;
       padding: 0 10px 1em;
       border-bottom: 1px solid #999999;
-      p{
+      p {
         line-height: 5em;
       }
-      p:first-child{
+      p:first-child {
         float: left;
       }
-      p:nth-child(2){
+      p:nth-child(2) {
         float: right;
       }
-      span{
+      span {
         position: absolute;
         right: 10px;
         bottom: 1em;

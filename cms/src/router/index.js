@@ -13,6 +13,8 @@ const Search = resolve => require(['@/views/Search.vue'], resolve)
 const Pay = resolve => require(['@/components/car/pay/pay.vue'], resolve)
 const Login = resolve => require(['@/views/login.vue'], resolve)
 const Bank = resolve => require(['@/views/Bank.vue'], resolve)
+const gongneng = resolve => require(['@/views/gongneng.vue'], resolve)
+const shouyi = resolve => require(['@/views/shouyi.vue'], resolve)
 
 
 export default new Router({
@@ -61,6 +63,14 @@ export default new Router({
       path: '/Bank',
       name: '财务页',
       component: Bank
+    },{
+      path: '/gongneng',
+      name: '功能页',
+      component: gongneng
+    },{
+      path: '/shouyi',
+      name: '收益页',
+      component: shouyi
     }
   ]
 })

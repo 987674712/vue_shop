@@ -16,7 +16,7 @@
           {{datas.name}}
           <span>(已选 公益款)</span>
         </h1>
-        <span>{{datas.amount}}元</span>
+        <span>{{datas.amount/100}}元</span>
         <p class="chose-view-intro">{{datas.intro}}</p>
       </div>
       <!-- 添加空函数 解决Safari浏览器 :active无效 -->
@@ -78,11 +78,12 @@ export default {
       }];
 
 
+      if (this.Local.getLocal('user').mobile !== ''){
       MessageBox
         .confirm
         (
           `商品名称:${product[0].title}</br>` +
-          `价格:${product[0].price}</br>` +
+          `价格:${product[0].price/100}元</br>` +
           // `款式:${product[0].size}</br>` +
           `规格:公益款</br>` +
           `商品ID:${product[0].id}</br>`
@@ -91,6 +92,20 @@ export default {
           this.$router.push({ path: '/car/pay/'+ this.$route.params.id})
         }, function (err) {
         });
+      }else {
+        MessageBox
+          .confirm(
+            `请先绑定手机号码`
+          ) .then(action => {
+          this.$router.push({
+            path:'/bindMobile'
+          })
+        }, function (err) {
+
+          console.log('用户点击取消')
+          //点击取消执行这里的函数
+        })
+      }
     }
   },
   beforeCreate(){
