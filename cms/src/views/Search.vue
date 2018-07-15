@@ -2,44 +2,45 @@
 
   <div class="car">
     <v-header class="header">
-      <h1 slot="title">新增纸巾机</h1>
+      <h1 slot="title">纸巾机</h1>
     </v-header>
+    <div style="padding: 0 3vw;">
+        <mt-field label="设备编号" v-model="params.deviceCode" placeholder="请输入设备编号">
+            <span class="btn-sao">扫码</span>
+        </mt-field>
 
-    <mt-field label="设备编号" v-model="params.deviceCode">
-      <mt-button class="btn" type="primary">扫码</mt-button>
-    </mt-field>
-
-    <mt-field label="设备IMEI号" v-model="params.imei">
-      <mt-button class="btn" type="primary">扫码</mt-button>
-    </mt-field>
-    <mt-field label="地点名称" v-model="params.building"></mt-field>
-    <mt-field label="省" v-model="params.province">
-        <mt-button class="btn" @click="provinceshow = true" type="primary">选择</mt-button>
-    </mt-field>
-    <mt-field label="市" v-model="params.city">
-        <mt-button class="btn" @click="getCity" type="primary">选择</mt-button>
-    </mt-field>
-    <mt-field label="城市区域" v-model="params.region"></mt-field>
-    <mt-field label="详细地址" v-model="params.address"></mt-field>
-    <iframe src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"
-            frameborder="0"></iframe>
-    <div class="toGo">
-      <mt-button @click="toPass" plain type="primary" size="large">立即注册</mt-button>
-    </div>
-    <div style="" class="province my-picker" v-if="provinceshow">
-        <div class="btn">
-            <mt-button @click="provinceshow = false" style="float: left" size="small">取消</mt-button>
-            <mt-button @click="provinceshow = false"  style="float: right" type="primary" size="small">确定</mt-button>
+        <mt-field label="设备IMEI号" v-model="params.imei" placeholder="请输入设备IMEI号">
+            <span class="btn-sao">扫码</span>
+        </mt-field>
+        <mt-field label="地点名称" v-model="params.building" placeholder="请输入地点名称"></mt-field>
+        <mt-field label="省" v-model="params.province" placeholder="请选择省">
+            <span class="btn-sao" @click="provinceshow = true" >选择</span>
+        </mt-field>
+        <mt-field label="市" v-model="params.city" placeholder="请输入市">
+            <span class="btn-sao" @click="getCity">选择</span>
+        </mt-field>
+        <mt-field label="城市区域" v-model="params.region" placeholder="请输入城市区域"></mt-field>
+        <mt-field label="详细地址" v-model="params.address" placeholder="请输入详细地址"></mt-field>
+        <iframe src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"
+                frameborder="0"></iframe>
+        <div class="toGo">
+            <mt-button @click="toPass" plain type="primary" size="large">确定</mt-button>
         </div>
-        <mt-picker value-key="name" :slots="list" @change="onValuesChange"></mt-picker>
+        <div style="" class="province my-picker" v-if="provinceshow">
+            <div class="btn">
+                <mt-button @click="provinceshow = false" style="float: left" size="small">取消</mt-button>
+                <mt-button @click="provinceshow = false"  style="float: right" type="primary" size="small">确定</mt-button>
+            </div>
+            <mt-picker value-key="name" :slots="list" @change="onValuesChange"></mt-picker>
+        </div>
+        <div class="city my-picker" v-if="cityshow">
+            <div class="btn">
+                <mt-button @click="cityshow = false" style="float: left" size="small">取消</mt-button>
+                <mt-button @click="cityshow = false"  style="float: right" type="primary" size="small">确定</mt-button>
+            </div>
+            <mt-picker value-key="name" :slots="city" @change="onCity"></mt-picker>
+        </div>
     </div>
-      <div class="city my-picker" v-if="cityshow">
-          <div class="btn">
-              <mt-button @click="cityshow = false" style="float: left" size="small">取消</mt-button>
-              <mt-button @click="cityshow = false"  style="float: right" type="primary" size="small">确定</mt-button>
-          </div>
-          <mt-picker value-key="name" :slots="city" @change="onCity"></mt-picker>
-      </div>
   </div>
 </template>
 
@@ -145,7 +146,6 @@
                     // latitude:'',
             }
         }, false);
-
     }
 
   }
@@ -155,6 +155,7 @@
   @import '../assets/fz.less';
   @import '../assets/index/style.css';
   .car{
+      background-color: rgb(242,242,242);
     padding-bottom: 60px;
   }
   .mint-header {
@@ -183,5 +184,17 @@
         .btn{
         border-bottom: 1px solid #bfbfbf;padding: 5px 10px;overflow: hidden
     }
+    }
+    .mint-cell{
+        border-bottom: 1px solid rgb(220,220,220)!important;background-color: rgb(242,242,242);
+
+    }
+    .btn-sao{
+        color: rgb(236,96,60);
+    }
+</style>
+<style>
+    .mint-field-core{
+        background-color: rgb(242,242,242)!important;
     }
 </style>

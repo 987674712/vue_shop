@@ -15,6 +15,9 @@ const Login = resolve => require(['@/views/login.vue'], resolve)
 const Bank = resolve => require(['@/views/Bank.vue'], resolve)
 const gongneng = resolve => require(['@/views/gongneng.vue'], resolve)
 const shouyi = resolve => require(['@/views/shouyi.vue'], resolve)
+const tuandui = resolve => require(['@/views/tuandui.vue'], resolve)
+const withdraw = resolve => require(['@/views/withdraw.vue'], resolve)
+const usertest = resolve => require(['@/views/usertest.vue'], resolve)
 
 
 export default new Router({
@@ -71,6 +74,18 @@ export default new Router({
       path: '/shouyi',
       name: '收益页',
       component: shouyi
+    },{
+      path: '/tuandui',
+      name: '团队页',
+      component: tuandui
+    },{
+      path: '/withdraw',
+      name: '提现页',
+      component: withdraw
+    },{
+      path: '/usertest',
+      name: '调试页',
+      component: usertest
     }
   ]
 })

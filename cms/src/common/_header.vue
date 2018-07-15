@@ -15,19 +15,19 @@
 @import '../assets/fz.less';
 @import '../assets/index/style.css';
 header {
-  background-color: #F8FCFF;
   text-align: center;
   position: relative;
   height: 12vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 4vw;
+  background-color: white;
   h1 {
     .fz(font-size,34);
     letter-spacing: .2vw;
-    font-weight: 600;
-    margin-right: 36vw;
+    float: left;
+    color: #4caf50;
+    margin-left: 5vw;
   }
   span,a {
     display: inline-block;

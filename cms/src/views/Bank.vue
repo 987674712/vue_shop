@@ -4,24 +4,26 @@
     <v-header class="header">
       <h1 slot="title">提现管理</h1>
     </v-header>
-    <div class="title">绑定银行卡</div>
-    <div>
-      <mt-field label="请输入银行" >
-        <!--<mt-picker style="width: 100%" :slots="slots" @change="onValuesChange"></mt-picker>-->
-      </mt-field>
-      <mt-field label="银行开户名" ></mt-field>
-      <mt-field label="银行卡账号" ></mt-field>
+    <div class="top">
+      <div class="title">绑定银行卡</div>
+      <div class="ml">
+        <mt-field label="请输入银行" >
+          <!--<mt-picker style="width: 100%" :slots="slots" @change="onValuesChange"></mt-picker>-->
+        </mt-field>
+        <mt-field label="银行开户名" ></mt-field>
+        <mt-field label="银行卡账号" ></mt-field>
+      </div>
+      <div class="title">绑定支付宝</div>
+      <div class="ml">
+        <mt-field label="支付宝账号" ></mt-field>
+        <mt-field label="支付宝姓名" ></mt-field>
+      </div>
+      <div class="title">密码管理</div>
+      <div class="ml">
+        <mt-field label="提现密码" v-model="captcha"></mt-field>
+      </div>
+      <mt-button style="width: 100%;margin-top: 20px" type="primary">确定</mt-button>
     </div>
-    <div class="title">绑定支付宝</div>
-    <div>
-      <mt-field label="支付宝账号" ></mt-field>
-      <mt-field label="支付宝姓名" ></mt-field>
-    </div>
-    <div class="title">密码管理</div>
-    <div>
-      <mt-field label="提现密码" v-model="captcha"></mt-field>
-    </div>
-    <!--<v-footer/>-->
   </div>
 </template>
 
@@ -60,12 +62,23 @@
   .index {
     width: 100%;
     padding-bottom: 14vw;
-    background-color: #F8FCFF;
   }
 
   .title {
     line-height: 2.5em;
-    padding: 0 3vw;
-    border-bottom: 1px solid #999999;
+    padding: 0 5px;
+    color: rgb(51,51,51);
+  }
+  .top{
+    padding: 10px;
+  }
+  .ml{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+</style>
+<style>
+  .mint-cell:not(:last-child){
+    border-bottom: 1px solid rgb(220,220,220);
   }
 </style>

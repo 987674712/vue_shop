@@ -29,6 +29,7 @@
                     <p>1号纸巾机</p>
                     <p>有纸巾</p>
                     <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
             <router-link :to="{ name: '详情页'}" class="section1-banner">
@@ -36,6 +37,7 @@
                     <p>1号纸巾机</p>
                     <p>有纸巾</p>
                     <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
             <router-link :to="{ name: '详情页'}" class="section1-banner">
@@ -43,6 +45,7 @@
                     <p>1号纸巾机</p>
                     <p>有纸巾</p>
                     <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
             <router-link :to="{ name: '详情页'}" class="section1-banner">
@@ -50,6 +53,7 @@
                     <p>1号纸巾机</p>
                     <p>有纸巾</p>
                     <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
             <router-link :to="{ name: '详情页'}" class="section1-banner">
@@ -57,6 +61,15 @@
                     <p>1号纸巾机</p>
                     <p>有纸巾</p>
                     <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
+                </div>
+            </router-link>
+            <router-link :to="{ name: '详情页'}" class="section1-banner">
+                <div class="shebei">
+                    <p>1号纸巾机</p>
+                    <p>有纸巾</p>
+                    <span>地址：北京市东城区崇文门大街</span>
+                    <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
         </div>
@@ -196,6 +209,13 @@ display: inline;
                 position: absolute;
                 left: 10px;
                 bottom: 1em;
+            }
+            img{
+                width: 13px;
+                height: 20px;
+                position: absolute;
+                right: 0;
+                top: 40px;
             }
         }
     }

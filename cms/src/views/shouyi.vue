@@ -4,19 +4,35 @@
     <v-header class="header">
       <h1 slot="title">收益列表</h1>
     </v-header>
-    <div class="main">
-      <router-link class="my-indent" :to="{ name: ''}">
-        <span class="my-indent-left">推荐人</span>
-        <div class="my-indent-right">
-          <span>+200元</span>
-          <!--<i class="icon-go"></i>-->
+    <div class="ml_shebei">
+      <router-link :to="{ name: ''}" class="section1-banner">
+        <div class="shebei">
+          <p>推荐人</p>
+          <p>+200</p>
         </div>
       </router-link>
-      <router-link class="my-indent" :to="{ name: ''}">
-        <span class="my-indent-left">机器收入</span>
-        <div class="my-indent-right">
-          <span>+18.5元</span>
-          <!--<i class="icon-go"></i>-->
+      <router-link :to="{ name: ''}" class="section1-banner">
+        <div class="shebei">
+          <p>机器收入</p>
+          <p>+18.5</p>
+        </div>
+      </router-link>
+      <router-link :to="{ name: ''}" class="section1-banner">
+        <div class="shebei">
+          <p>机器收入</p>
+          <p>+18.5</p>
+        </div>
+      </router-link>
+      <router-link :to="{ name: ''}" class="section1-banner">
+        <div class="shebei">
+          <p>机器收入</p>
+          <p>+18.5</p>
+        </div>
+      </router-link>
+      <router-link :to="{ name: ''}" class="section1-banner">
+        <div class="shebei">
+          <p>机器收入</p>
+          <p>+18.5</p>
         </div>
       </router-link>
     </div>
@@ -48,126 +64,34 @@
   .car {
     width: 100%;
     background-color: #F8FCFF;
-    .main {
-      width: 100%;
-      .my-indent {
-        width: 100%;
-        display: block;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        color: #333;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        padding: 0 5vw;
-        height: 15vw;
-        line-height: 15vw;
-        background-color: #fff;
-        .bd();
-        &:active {
-          background-color: rgb(224, 227, 230)
-        }
-
-        .my-indent-right {
-          span {
-            display: inline-block;
-            .fz(font-size, 28);
-            color: rgba(0, 0, 0, .4);
-            position: relative;
-          }
-          i {
-            position: relative;
-            top: .8vw;
-          }
-        }
+  }
+  .ml_shebei {
+    padding: 0 4vw;
+    background-color: rgb(242,242,242);
+    .shebei {
+      position: relative;
+      overflow: hidden;
+      padding: 5vw 3px 1vw;
+      border-bottom: 1px solid rgb(220,220,220);
+      p {
+        /*line-height: 5em;*/
       }
-
-      .my-pay {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%;
-        padding: 2vw 0;
-        background-color: #fff;
-        .bd();
-
-        >a {
-          display: block;
-          width: 33.33%;
-          color: #999;
-          text-align: center;
-
-          >span {
-            .fz(font-size, 50);
-            margin-top: 2.3vw;
-            display: block;
-            text-align: center;
-          }
-
-          p {
-            padding: 2.3vw 0;
-            text-align: center;
-          }
-        }
+      p:first-child {
+        line-height: 1.8em;
+        display: inline;
+        float: left;
       }
-
-      .my-vip,.my-service,.my-settle {
-        width: 100%;
-        .mt();
-        .bd();
-        .bt();
-        >a {
-          background-color: #fff;
-          display: block;
-          width: 100%;
-          display: -ms-flex;
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          height: 15vw;
-          -webkit-box-align: center;
-          -ms-flex-align: center;
-          align-items: center;
-          -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-          justify-content: space-between;
-          padding: 0 6vw;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          &:active {
-            background-color: rgb(224, 227, 230);
-          }
-          >div {
-            -ms-flex: 2;
-            -webkit-box-flex: 2;
-            flex: 2;
-            padding-top: 1.3vw;
-          }
-
-          .my-vip-top-div {
-            padding-top: 0;
-          }
-          >p {
-            -ms-flex: 10;
-            -webkit-box-flex: 10;
-            flex: 10;
-            position: relative;
-
-            &:active {
-              background-color: rgb(224, 227, 230);
-            }
-
-            i {
-              position: absolute;
-              right: 0;
-              top: .4vw;
-            }
-          }
-        }
-
+      p:nth-child(2) {
+        display: inline;
+        float: right;
+        margin-left: 30px;
+        color: rgb(236,96,60);
+        line-height: 1.8em;
+      }
+      span {
+        position: absolute;
+        left: 10px;
+        bottom: 1em;
       }
     }
   }

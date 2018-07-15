@@ -2,58 +2,80 @@
 
   <div class="car">
     <v-header class="header">
-      <h1 slot="title">功能列表</h1>
+      <h1 slot="title">设备列表</h1>
     </v-header>
-    <router-link :to="{ name: '管理页'}"  class="section1-banner">
-      <img class="add" src="../image/add.png" alt="">
-    </router-link>
+
     <div class="ml_shebei">
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
-          <p>今日收益：3元 有纸巾》</p>
-          <span>
-          地址：北京市东城区崇文门大姐
-        </span>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
-          <p>今日收益：3元 有纸巾》</p>
-          <span>
-          地址：北京市东城区崇文门大姐
-        </span>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
-          <p>今日收益：3元 有纸巾》</p>
-          <span>
-          地址：北京市东城区崇文门大姐
-        </span>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
-          <p>今日收益：3元 有纸巾》</p>
-          <span>
-          地址：北京市东城区崇文门大姐
-        </span>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}"  class="section1-banner">
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
         <div class="shebei">
           <p>1号纸巾机</p>
-          <p>今日收益：3元 有纸巾》</p>
-          <span>
-          地址：北京市东城区崇文门大姐
-        </span>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
         </div>
+      </router-link>
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
+        <div class="shebei">
+          <p>1号纸巾机</p>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
+        </div>
+      </router-link>
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
+        <div class="shebei">
+          <p>1号纸巾机</p>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
+        </div>
+      </router-link>
+      <router-link :to="{ name: '详情页'}" class="section1-banner">
+        <div class="shebei">
+          <p>1号纸巾机</p>
+          <p>有纸巾</p>
+          <span>地址：北京市东城区崇文门大街</span>
+          <img src="../image/icon/jt.png" alt="">
+        </div>
+      </router-link>
+      <router-link :to="{ name: '管理页'}" class="section1-banner">
+        <mt-button style="width: 100%;margin-top: 10px" class="btn" type="primary">新增设备</mt-button>
       </router-link>
     </div>
+
+
     <!--<v-footer/>-->
   </div>
 </template>
@@ -97,26 +119,37 @@
   }
 
   .ml_shebei {
-    padding-bottom: 50px;
-    border-top: 1px solid #999999;
+    padding: 0 4vw;
+    background-color: rgb(242,242,242);
     .shebei {
       position: relative;
       overflow: hidden;
-      padding: 0 10px 1em;
-      border-bottom: 1px solid #999999;
+      padding: 7vw 10px 10vw;
+      border-bottom: 1px solid rgb(220,220,220);
       p {
-        line-height: 5em;
+        /*line-height: 5em;*/
       }
       p:first-child {
-        float: left;
+        line-height: 1.8em;
+        display: inline;
       }
       p:nth-child(2) {
-        float: right;
+        display: inline;
+        margin-left: 30px;
+        color: rgb(236,96,60);
+        font-size: 14px;
       }
       span {
         position: absolute;
-        right: 10px;
+        left: 10px;
         bottom: 1em;
+      }
+      img{
+        width: 13px;
+        height: 20px;
+        position: absolute;
+        right: 0;
+        top: 40px;
       }
     }
   }
@@ -125,5 +158,11 @@
     position: fixed;
     right: 20px;bottom: 18vw;width: 50px;height: 50px;
     background-color: white;z-index: 9999;border-radius: 50%;
+  }
+</style>
+<style>
+
+  .btn-1{
+    width: 100%;
   }
 </style>

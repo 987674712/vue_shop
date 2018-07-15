@@ -8,7 +8,7 @@
           <span>您好，18888888888<br/>推荐人:小李子</span>
       </header>
       <div class="main">
-          <router-link class="my-indent" :to="{ name: ''}">
+          <router-link class="my-indent" :to="{ name: '提现页'}">
               <span class="my-indent-left">可提现金额</span>
               <div class="my-indent-right">
                   <span>4985元</span>
@@ -95,11 +95,11 @@
   .car {
     width: 100%;
     padding-bottom: 14vw;
-    background-color: #F8FCFF;
+      background-color: rgb(242,242,242);
     .header {
       width: 100%;
       height: 16vw;
-      background: url(../../static/carbg.png) center 0 #f37d0f;
+      background: rgb(135, 204, 90);
       background-size: auto 100%;
       padding: 3.2vw 0;
       display: -webkit-box;
@@ -129,7 +129,7 @@
       >span {
         margin-left: 3.2vw;
         .fz(font-size, 30);
-        color: #ffffff;
+        color: rgb(51,51,51);
         letter-spacing: .2vw;
       }
     }
@@ -150,7 +150,7 @@
         padding: 0 5vw;
         height: 15vw;
         line-height: 15vw;
-        background-color: #fff;
+        background-color: rgb(242,242,242);
         .bd();
         &:active {
           background-color: rgb(224, 227, 230)
