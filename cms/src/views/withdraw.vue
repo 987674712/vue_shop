@@ -19,9 +19,14 @@
                     ￥<input type="number" class="withdraw-text" placeholder="请输入金额">
                 </div>
                 <span style="color: rgb(128,128,128);font-size: 14px;line-height: 40px">余额99.99 全部提现</span>
-                <mt-button style="width: 100%;margin:0 0 20px" type="primary">确定</mt-button>
+                <mt-button style="width: 100%;margin:  0 0 20px" type="primary">确定</mt-button>
             </div>
         </div>
+        <router-link :to="{ name: '提现记录页'}">
+            <div class="memo">
+                提现记录
+            </div>
+        </router-link>
     </div>
 </template>
 
@@ -105,5 +110,8 @@
             color: rgb(51,51,51);
             border-bottom: 1px solid rgb(220,220,220);
         }
+    }
+    .memo{
+        text-align: center;color: rgb(138,168,230);font-size: 12px
     }
 </style>

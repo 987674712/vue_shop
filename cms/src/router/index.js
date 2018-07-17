@@ -18,6 +18,7 @@ const shouyi = resolve => require(['@/views/shouyi.vue'], resolve)
 const tuandui = resolve => require(['@/views/tuandui.vue'], resolve)
 const withdraw = resolve => require(['@/views/withdraw.vue'], resolve)
 const usertest = resolve => require(['@/views/usertest.vue'], resolve)
+const tixianmemo = resolve => require(['@/views/tixianmemo.vue'], resolve)
 
 
 export default new Router({
@@ -86,6 +87,10 @@ export default new Router({
       path: '/usertest',
       name: '调试页',
       component: usertest
+    },{
+      path: '/tixianmemo',
+      name: '提现记录页',
+      component: tixianmemo
     }
   ]
 })

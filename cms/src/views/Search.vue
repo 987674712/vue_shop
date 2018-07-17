@@ -126,7 +126,16 @@
             this.cityshow = true
         },
         toPass(){
-         console.log(this.params)
+            // /api/v1/device/addDevice
+            this.$api({
+                method: 'post',
+                url: '/api/v1/device/addDevice',
+                data:this.params
+            }).then((response) => {
+
+            }).catch(function (error) {
+
+            });
         }
     },
     computed: {

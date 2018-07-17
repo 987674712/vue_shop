@@ -7,31 +7,33 @@
     <div class="ml_shebei">
       <router-link :to="{ name: ''}" class="section1-banner">
         <div class="shebei">
-          <p>推荐人</p>
+          <p>推荐人<br/><a href="javascript:">2018-07-16 18:16</a></p>
           <p>+200</p>
         </div>
       </router-link>
       <router-link :to="{ name: ''}" class="section1-banner">
         <div class="shebei">
-          <p>机器收入</p>
+          <p>
+            机器收入<br/><a href="javascript:">2018-07-16 18:16</a>
+          </p>
           <p>+18.5</p>
         </div>
       </router-link>
       <router-link :to="{ name: ''}" class="section1-banner">
         <div class="shebei">
-          <p>机器收入</p>
+          <p>机器收入<br/><a href="javascript:">2018-07-16 18:16</a></p>
           <p>+18.5</p>
         </div>
       </router-link>
       <router-link :to="{ name: ''}" class="section1-banner">
         <div class="shebei">
-          <p>机器收入</p>
+          <p>机器收入<br/><a href="javascript:">2018-07-16 18:16</a></p>
           <p>+18.5</p>
         </div>
       </router-link>
       <router-link :to="{ name: ''}" class="section1-banner">
         <div class="shebei">
-          <p>机器收入</p>
+          <p>机器收入<br/><a href="javascript:">2018-07-16 18:16</a></p>
           <p>+18.5</p>
         </div>
       </router-link>
@@ -71,7 +73,7 @@
     .shebei {
       position: relative;
       overflow: hidden;
-      padding: 5vw 3px 1vw;
+      padding: 5vw 3px 6vw;
       border-bottom: 1px solid rgb(220,220,220);
       p {
         /*line-height: 5em;*/
@@ -80,6 +82,7 @@
         line-height: 1.8em;
         display: inline;
         float: left;
+        color: rgb(51,51,51);
       }
       p:nth-child(2) {
         display: inline;
@@ -92,6 +95,11 @@
         position: absolute;
         left: 10px;
         bottom: 1em;
+      }
+      a{
+        font-size: 14px;
+        position: absolute;
+        bottom: 0;
       }
     }
   }
