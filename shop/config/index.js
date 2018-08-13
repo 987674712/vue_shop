@@ -29,10 +29,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {  //使用"/api"来代替"http://f.apiplus.c"
-        target: 'http://zhijin.97reader.com/', //源地址
+        target: 'http://www.nazoubei.com/', //源地址
         changeOrigin: true, //改变源
         pathRewrite: {
-          '^/api': 'http://zhijin.97reader.com/' //路径重写
+          '^/api': 'http://www.nazoubei.com/' //路径重写
         }
       }
     },

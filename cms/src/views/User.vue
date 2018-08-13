@@ -1,17 +1,17 @@
 <template lang="html">
 
   <div class="car">
-      <header class="header">
-          <div class="header-icon">
-              <span class="icon2-user"></span>
-          </div>
-          <span>您好，18888888888<br/>推荐人:小李子</span>
-      </header>
+    <header class="header">
+      <div class="header-icon">
+        <img :src="data.portrait?data.portrait:'http://zhijin.97reader.com/images/photo.jpg'" alt="">
+      </div>
+      <span>您好，{{data.nickName?data.nickName:'优领达'}}<br><a class="tuijian" href="javascript:">推荐人：{{data.referee?data.referee:data.refereeMobile?data.refereeMobile:'暂无'}}</a></span>
+    </header>
       <div class="main">
           <router-link class="my-indent" :to="{ name: '提现页'}">
               <span class="my-indent-left">可提现金额</span>
               <div class="my-indent-right">
-                  <span>4985元</span>
+                  <span>{{wallet/100}}元</span>
                   <i class="icon-go"></i>
               </div>
           </router-link>
@@ -22,6 +22,21 @@
                   <i class="icon-go"></i>
               </div>
           </router-link>
+          <router-link class="my-indent" :to="{ name: '密码页'}">
+              <span class="my-indent-left">提现密码</span>
+              <div class="my-indent-right">
+                  <span></span>
+                  <i class="icon-go"></i>
+              </div>
+          </router-link>
+
+        <router-link @click.native="toShop" class="my-indent" :to="{ name: ''}">
+          <span class="my-indent-left">商城</span>
+          <div class="my-indent-right">
+            <span></span>
+            <i class="icon-go"></i>
+          </div>
+        </router-link>
 
 
           <!--<section class="my-vip">-->
@@ -82,6 +97,20 @@
     components: {
       'v-baseline': Baseline,
       'v-footer': Footer
+    },
+    data(){
+      return{
+        mobile:this.Local.getLocal('user').mobile,
+        referee:this.Local.getLocal('user').referee,
+        refereeMobile:this.Local.getLocal('user').refereeMobile,
+        wallet:this.Local.getLocal('user').wallet,
+        data:this.Local.getLocal('user')
+      }
+    },
+    methods:{
+      toShop:function () {
+        window.location.href = window.location.origin+'/'
+      }
     }
   }
 </script>
@@ -91,11 +120,10 @@
   @import '../assets/index/style.css';
   @import '../assets/user/icon/carstyle.css';
 
-
   .car {
     width: 100%;
     padding-bottom: 14vw;
-      background-color: rgb(242,242,242);
+    background-color: rgb(242, 242, 242);
     .header {
       width: 100%;
       height: 16vw;
@@ -109,16 +137,18 @@
       -ms-flex-align: center;
       align-items: center;
       .header-icon {
-        border: .4vw solid #ffffff;
-        background-color: @cl;
-        margin-left: 4vw;
-        -webkit-box-sizing: border-box;
-              box-sizing: border-box;
-        width: 14vw;
-        height: 14vw;
-        line-height: 16vw;
-        text-align: center;
-        border-radius: 50%;
+        > img {
+          border: .4vw solid #ffffff;
+          background-color: @cl;
+          margin-left: 4vw;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          width: 14vw;
+          height: 14vw;
+          line-height: 16vw;
+          text-align: center;
+          border-radius: 50%;
+        }
         span {
           .fz(font-size, 54);
           &::before {
@@ -126,10 +156,10 @@
           }
         }
       }
-      >span {
+      > span {
         margin-left: 3.2vw;
         .fz(font-size, 30);
-        color: rgb(51,51,51);
+        color: white;
         letter-spacing: .2vw;
       }
     }
@@ -150,7 +180,7 @@
         padding: 0 5vw;
         height: 15vw;
         line-height: 15vw;
-        background-color: rgb(242,242,242);
+        background-color: rgb(242, 242, 242);
         .bd();
         &:active {
           background-color: rgb(224, 227, 230)
@@ -179,13 +209,13 @@
         background-color: #fff;
         .bd();
 
-        >a {
+        > a {
           display: block;
           width: 33.33%;
           color: #999;
           text-align: center;
 
-          >span {
+          > span {
             .fz(font-size, 50);
             margin-top: 2.3vw;
             display: block;
@@ -199,12 +229,12 @@
         }
       }
 
-      .my-vip,.my-service,.my-settle {
+      .my-vip, .my-service, .my-settle {
         width: 100%;
         .mt();
         .bd();
         .bt();
-        >a {
+        > a {
           background-color: #fff;
           display: block;
           width: 100%;
@@ -214,31 +244,31 @@
           display: flex;
           height: 15vw;
           -webkit-box-align: center;
-              -ms-flex-align: center;
-                  align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
           -webkit-box-pack: justify;
-              -ms-flex-pack: justify;
-                  justify-content: space-between;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
           padding: 0 6vw;
           -webkit-box-sizing: border-box;
-                  box-sizing: border-box;
+          box-sizing: border-box;
           &:active {
             background-color: rgb(224, 227, 230);
           }
-          >div {
+          > div {
             -ms-flex: 2;
             -webkit-box-flex: 2;
-                    flex: 2;
-                    padding-top: 1.3vw;
+            flex: 2;
+            padding-top: 1.3vw;
           }
 
           .my-vip-top-div {
             padding-top: 0;
           }
-          >p {
+          > p {
             -ms-flex: 10;
             -webkit-box-flex: 10;
-                    flex: 10;
+            flex: 10;
             position: relative;
 
             &:active {
@@ -255,6 +285,11 @@
 
       }
     }
+  }
+  .tuijian{
+    display: inline-block;
+    padding-top: 5px;
+    color: white;
   }
   /*图标大小不一，重新定义*/
 

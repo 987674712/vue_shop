@@ -88,7 +88,7 @@
 
 <script>
   import Header from '@/common/_header.vue'
-  import {Toast} from 'mint-ui'
+  import {Toast, MessageBox } from 'mint-ui'
 
   export default {
     components: {
@@ -217,21 +217,36 @@
           url: '/api/v1/user/profile?userId=' + this.GetQueryString('userId')
         }).then((response) => {
           this.Local.setLocal('user',response.data.data)
-          this.$router.replace({
-            path: '/'
-          })
+          if (response.data.data.vip === 0) {  // 通过vuex state获取当前的token是否存在
+            MessageBox({
+              title: '提示',
+              message: '您未购买机器，请购买后再进入'
+            }).then(action => {
+              WeixinJSBridge.invoke('closeWindow',{},function(res){
+                console.log('关闭成功')
+              });
+            });
+            return
+          }if(this.Local.getLocal('user').vip === 1){
+            if(window.location.href.indexOf('http://localhost') > 0){
+              window.location.replace(window.location.origin+'/')
+              return
+            }
+            window.location.replace(window.location.origin+'/cms')
+            // this.$router.replace({
+            //   path: '/'
+            // })
+          }
+          // this.$router.replace({
+          //   path: '/'
+          // })
         })
       }else{
         Toast('登录失败，请正确登录，或联系管理员处理');
       }
     },
     beforeCreate(){
-      // this.$store.dispatch('setDatas',this.$route.params.id);
-      // if(localStorage.getItem('token')){
-      //   this.$router.replace({
-      //     path: 'user'
-      //   })
-      // }
+
     }
   }
 

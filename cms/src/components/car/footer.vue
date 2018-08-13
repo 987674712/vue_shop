@@ -34,13 +34,9 @@ export default {
       let all = 0;
       // 如果有勾选商品,计算总价格
       if (this.$store.getters.selectedList != undefined) {
-
         for (let i = 0; i < this.$store.getters.selectedList.length; i++) {
-
           all += this.$store.getters.selectedList[i].price;
-
         }
-
       }
       // 没有勾选 即为0
       return all
@@ -50,19 +46,14 @@ export default {
   methods: {
     //点击跳转到支付页
     goPay () {
-
       // 如果有选择商品才能跳转
       if (this.$store.getters.selectedList.length) {
         // 保存+缓存选择的商品 ,在支付页能用到
         this.$store.dispatch('setSelectedList')
         this.$router.push({ name: '支付页' })
-
       } else {
-
         alert('你还没选择商品')
-
       }
-
     }
   }
 }

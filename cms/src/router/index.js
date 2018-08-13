@@ -19,6 +19,8 @@ const tuandui = resolve => require(['@/views/tuandui.vue'], resolve)
 const withdraw = resolve => require(['@/views/withdraw.vue'], resolve)
 const usertest = resolve => require(['@/views/usertest.vue'], resolve)
 const tixianmemo = resolve => require(['@/views/tixianmemo.vue'], resolve)
+const password = resolve => require(['@/views/password.vue'], resolve)
+const active = resolve => require(['@/views/active.vue'], resolve)
 
 
 export default new Router({
@@ -52,11 +54,11 @@ export default new Router({
            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
        },
     }, {
-      path: '/detail',
+      path: '/detail/:id',
       name: '详情页',
       component: Detail
     }, {
-      path: '/search',
+      path: '/search/:id',
       name: '管理页',
       component: Search
     },{
@@ -91,6 +93,14 @@ export default new Router({
       path: '/tixianmemo',
       name: '提现记录页',
       component: tixianmemo
+    },{
+      path: '/password',
+      name: '密码页',
+      component: password
+    },{
+      path: '/active',
+      name: '活动页',
+      component: active
     }
   ]
 })

@@ -216,12 +216,15 @@
           method: 'get',
           url: '/api/v1/user/profile?userId=' + this.GetQueryString('userId')
         }).then((response) => {
-          this.Local.setLocal('user',response.data.data)
-          localStorage.setItem('nickName', response.data.data.nickName)
-          localStorage.setItem('address', response.data.data.address)
-          this.$router.replace({
-            path: '/'
-          })
+          if(response.data.code === 1000){
+            this.Local.setLocal('user',response.data.data)
+            // localStorage.setItem('nickName', response.data.data.nickName)
+            // localStorage.setItem('address', response.data.data.address)
+            window.location.replace(window.location.origin+'/')
+            // this.$router.replace({
+            //   path: '/'
+            // })
+          }
         })
       }else{
         Toast('登录失败，请正确登录，或联系管理员处理');

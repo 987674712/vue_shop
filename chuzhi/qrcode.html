@@ -2,111 +2,327 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>纸巾机服务</title>
+    <title>取纸</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <style>
-        .line2{position:absolute;left: 183px;top: 10px;height: 1px;width: 43px;background: #979797;z-index: 999;}*{margin:0;padding:0;border:0}body{position:absolute;width:100%;height:100%;text-align:center}#pos-area{background-color:#009DDC;margin-bottom:10px;width:100%;overflow:scroll;text-align:left;color:#fff}#demo{padding:8px;font-size:small}#btn-area{height:50px;position:fixed;bottom:0;width:100%;padding-bottom:10px}button{margin-bottom:10px;padding:12px 8px;width:42%;border-radius:8px;background-color:#009DDC;color:#fff}body{background:url(images/bg2.png) no-repeat top center #000;-webkit-background-size:100%;background-size:100%}.zj{width:66px;height:75px;margin:100px auto 11px auto;background:url(images/out.png) no-repeat top center transparent}.cred{color:#F04E64}.ewm img{display:block;width:197px;height:197px;border:2px solid #fff}.copy{font-size:16px;color:#fff;letter-spacing:.17px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;width:162px;margin:79px auto 0 auto;position:relative;height:30px;display:block}.line{position:absolute;left:-63px;top:10px;height:1px;width:43px;background:#979797;z-index:999}.title{padding-top:100px;font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:22px}.title2{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}.title3{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}
+        .line2 {
+            position: absolute;
+            left: 183px;
+            top: 10px;
+            height: 1px;
+            width: 43px;
+            background: #979797;
+            z-index: 999;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0
+        }
+
+        body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center
+        }
+
+        #pos-area {
+            background-color: #009DDC;
+            margin-bottom: 10px;
+            width: 100%;
+            overflow: scroll;
+            text-align: left;
+            color: #fff
+        }
+
+        #demo {
+            padding: 8px;
+            font-size: small
+        }
+
+        #btn-area {
+            height: 50px;
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            padding-bottom: 10px
+        }
+
+        button {
+            margin-bottom: 10px;
+            padding: 12px 8px;
+            width: 42%;
+            border-radius: 8px;
+            background-color: #EC603C;
+            color: #fff
+        }
+
+        body {
+            /*background: url() no-repeat top center #000;*/
+            -webkit-background-size: 100%;
+            background-size: 100%;
+        }
+
+        .zj {
+            width: 66px;
+            height: 75px;
+            margin: 100px auto 11px auto;
+            background: url(images/out.png) no-repeat top center transparent
+        }
+
+        .cred {
+            color: #F04E64
+        }
+
+        .ewm img {
+            display: block;
+            width: 197px;
+            height: 197px;
+            border: 2px solid #fff
+        }
+
+        .copy {
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: .17px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+            text-align: center;
+            width: 162px;
+            margin: 79px auto 0 auto;
+            position: relative;
+            height: 30px;
+            display: block
+        }
+
+        .line {
+            position: absolute;
+            left: -63px;
+            top: 10px;
+            height: 1px;
+            width: 43px;
+            background: #979797;
+            z-index: 999
+        }
+
+        .title {
+            padding-top: 100px;
+            font-size: 16px;
+            color: #FFF;
+            letter-spacing: .37px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+            text-align: center;
+            line-height: 22px
+        }
+
+        .title2 {
+            font-size: 16px;
+            color: #FFF;
+            letter-spacing: .37px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+            text-align: center;
+            line-height: 32px
+        }
+
+        .title3 {
+            font-size: 16px;
+            color: #FFF;
+            letter-spacing: .37px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+            text-align: center;
+            line-height: 32px
+        }
     </style>
+    <script src="../../../reader/reader/js/wx_open.js"></script>
 </head>
 <body>
-<div class="zj"></div>
-<p class="title3">纸巾机异常</p>
-<p class="title2"></p>
-<p class="copy">
-    <span class="cred">共享纸巾</span>流量财富商机
-    <span class="line"></span>
-    <span class="line2"></span>
-</p>
+<div style="width: 100%;height: 100%;overflow: hidden">
+    <img src="images/bg2.jpg" style="width: 100%;opacity: .9" alt="">
+</div>
+<!--<div class="zj"></div>-->
+<!--<p class="title3">纸巾机异常</p>-->
+<!--<p class="title2"></p>-->
+<!--<p class="copy">-->
+    <!--<span class="cred">共享纸巾</span>流量财富商机-->
+    <!--<span class="line"></span>-->
+    <!--<span class="line2"></span>-->
+<!--</p>-->
 <div id="btn-area">
-    <button class="mianfei" onClick="geolocation.getLocation(showPosition, showErr, options)">免费取纸</button>
+    <button class="mianfei mianfei0" onClick="geolocation.getLocation(showPosition, showErr, options)">免费取纸</button>
+    <button class="mianfei mianfei1" style="background: gray;display: none">免费取纸</button>
     <button onClick="geolocation.getLocation(showPosition1, showErr, options)">立即购买（0.5元）</button>
+</div>
+<div style="position: fixed;bottom: 19px;color: white;text-align: center;font-size: 12px;width: 100%">
+    （每购买一包纸巾，我们向公益事业捐赠0.01元）
+</div>
+<div class="maizhi" style="position: fixed;width: 100%;height: 100%;z-index: 1;top: 0;left: 0;display: none">
+    <div class="dddd" style="background: black;opacity: .5;position: absolute;width: 100%;height: 100%"></div>
+    <div style="width: 100%;position: absolute;z-index: 99;top: 30%;text-align: center;">
+        <img style="width: 50%" src="" alt="">
+        <br/><span style="color: white;font-size: 12px">长按二维码关注公众号</span><br/>
+        <span style="color: white;font-size: 12px">（提示：关注公众号后点击领取纸巾即可，点击其他位置取消）</span>
+    </div>
 </div>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
 <script type="text/JavaScript">
-    var geolocation = new qq.maps.Geolocation("OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77", "myapp");
+    var geolocation = new qq.maps.Geolocation("7ZPBZ-X27KP-COXDD-LFK6T-D5MAK-TBBKP", "myapp");
     var options = {timeout: 8000};
+
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
     }
+    function randomString(len) {
+        len = len || 32;
+        let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        let maxPos = $chars.length;
+        let pwd = '';
+        for (let i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+    let appId = randomString(32);
+    let nonce = randomString(32);
+    let headers = {}
+    headers.appId = appId;
+    headers.nonce = nonce;
+    headers.sign = md5(appId+nonce+'nazoubeicom').toUpperCase();
     function showPosition1(position) {
         // document.write(JSON.stringify(position))
-        if(getQueryString('deviceStatus') == 0){
+        if (getQueryString('deviceStatus') == 0) {
             alert('纸巾机异常')
-        }else{
-                $.ajax({
-                type: 'POST',
-                url: `http://zhijin.97reader.com/api/v1/user/paper/recharge`,
-                data: {
-                    userId:getQueryString('userId'),
-                    deviceCode:getQueryString('deviceCode'),
-                    amount:getQueryString('amount'),
-                    adsKey :0,
-                    lat :position.lat,
-                    lng :position.lng,
-                    city :position.city,
-                    province :position.province,
-                    payType :1
-                },
-                contentType:'application/json;charset=UTF-8',
-                success: function(data){
-                    if(data.data == 1000){
-                    // window.replace(data.url);
-                    console.log(data)
-                    }
-                },
-                error: function(xhr, type){
-                }
-            })
-        }
-    }
-    function showPosition(position) {
-        // document.write(JSON.stringify(position))
-        if(getQueryString('deviceStatus') == 0){
-            alert('纸巾机异常，请稍后再试')
-        }else{
+        } else {
+
             $.ajax({
                 type: 'POST',
-                url: `http://zhijin.97reader.com/api/v1/user/paper/recharge`,
+                url: `http://www.nazoubei.com/api/v1/user/paper/recharge`,
                 data: JSON.stringify({
-                    userId:getQueryString('userId'),
-                    deviceCode:getQueryString('deviceCode'),
-                    adsKey:getQueryString('adsKey'),
-                    amount:getQueryString('amount'),
-                    lat :position.lat,
-                    lng :position.lng,
-                    city :position.city,
-                    province :position.province,
-                    payType :2
+                    userId: getQueryString('userId'),
+                    deviceCode: getQueryString('deviceCode'),
+                    amount: getQueryString('amount'),
+                    adsKey: 0,
+                    lat: position.lat,
+                    lng: position.lng,
+                    city: position.city,
+                    province: position.province,
+                    payType: 1
                 }),
-                contentType:'application/json',
-                success: function(data){
-                    if(data.data == 1000){
-                        window.location.replace(data.url);
+                headers:headers,
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    if (data.code == 1000) {
+                        // window.replace(data.url);
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://www.nazoubei.com/pay/v1/charge/order',
+                            data: JSON.stringify({
+                                appId: data.appId,
+                                orderSn: data.rechargeNo,
+                                amount: 50,
+                                body: '一包公益纸巾',
+                                subject: '购买纸巾',
+                                channel: 'wx_pub',
+                                openId: data.openId
+                            }),
+                            contentType: 'application/json;charset=UTF-8',
+                            headers:headers,
+                            success: function (data) {
+                                if (data.code === 1000) {
+                                    data = data.data
+                                    WeixinJSBridge.invoke(
+                                        'getBrandWCPayRequest', {
+                                            "appId": data.appId,     //公众号名称，由商户传入
+                                            "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数
+                                            "nonceStr": data.nonceStr, //随机串
+                                            "package": data.package,
+                                            "signType": "MD5",         //微信签名方式：
+                                            "paySign": data.paySign //微信签名
+                                        },
+                                        function (res) {
+                                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                                // alert('支付成功')
+                                                window.location.href = 'https://wxh5.lianka123.com/?key=67730XZizPWaEpqjJiog1TWKdx160GQMJQV8BBAaaDMIs04Nselg7A'
+                                            }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                                        }
+                                    );
+                                }
+                            }
+                        })
                         console.log(data)
+                    } else {
+                        alert(data.message)
                     }
                 },
-                error: function(xhr, type){
+                error: function (xhr, type) {
                 }
             })
         }
     }
+
+    function showPosition(position) {
+        // alert(JSON.stringify(position))
+        // document.write(JSON.stringify(position))
+        if (getQueryString('deviceStatus') == 0) {
+            alert('纸巾机异常，请稍后再试')
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: `http://www.nazoubei.com/api/v1/user/paper/recharge`,
+                data: JSON.stringify({
+                    userId: getQueryString('userId'),
+                    deviceCode: getQueryString('deviceCode'),
+                    adsKey: getQueryString('adsKey'),
+                    amount: getQueryString('amount'),
+                    lat: position.lat,
+                    lng: position.lng,
+                    city: position.city,
+                    province: position.province,
+                    payType: 2
+                }),
+                contentType: 'application/json',
+                headers:headers,
+                success: function (data) {
+                    if (data.code == 1000) {
+                        $(".maizhi img").attr('src',data.url)
+                        $(".maizhi").show()
+                        // window.location.replace(data.url);
+                        console.log(data)
+                    } else {
+                        alert(data.message)
+                    }
+                },
+                error: function (xhr, type) {
+                }
+            })
+        }
+    }
+
     function showErr() {
         alert('定位失败，请重新扫码')
     }
+
     // geolocation.getLocation(showPosition, showErr, options)
-    if(getQueryString('deviceStatus') == 1){
+    if (getQueryString('deviceStatus') == 1) {
         $(".title3").text('纸巾机正常')
     }
-    if(getQueryString('adsKey') == 0){
-        $(".title2").text('暂无广告')
+    if (getQueryString('adsKey') == 0) {
+        // $(".title2").text('暂无广告')
+        $(".mianfei").text('暂无广告')
     }
-    if(getQueryString('adsKey') == 0){
-        $(".mianfei").hide()
+    if (getQueryString('adsKey') == 0) {
+        $(".mianfei").text('暂无广告')
+        $(".mianfei0").hide()
+        $(".mianfei1").show()
     }
+    $(".dddd").click(function () {
+        $(".maizhi").hide()
+    })
 </script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <template lang="html">
     <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="k in swiperData" :key="k.id">
+      <mt-swipe-item v-for="k in swiperData" :key="k">
         <router-link :to="{ name: ''}">
-          <img :src="k.icon">
+          <img :src="k">
         </router-link>
       </mt-swipe-item>
     </mt-swipe>

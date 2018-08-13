@@ -10,6 +10,10 @@ cms/node_modules/
 cms/dist/
 cms/.idea/
 cms/demo/
+papercms/node_modules/
+papercms/dist/
+papercms/.idea/
+papercms/demo/
 .project
 
 .idea

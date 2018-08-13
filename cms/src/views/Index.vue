@@ -5,70 +5,42 @@
         <router-link class="my-indent" :to="{ name: '收益页'}">
             <div class="top_yue">
                 <p>今日收益（元）</p>
-                <p>38.8元</p>
-                <p>余额：4779元</p>
+                <p>{{data.todayTotal/100}}元</p>
+                <p>余额：{{data.wallet/100}}元</p>
+              <img src="../image/icon/right.png" alt="">
             </div>
         </router-link>
         <div class="top_all">
             <div>
                 <p>累计收益(元)</p>
-                <p>17892</p>
+                <p>{{data.alltotal/100}}</p>
             </div>
             <div>
-                <p>昨日收益(元)</p>
-                <p>123</p>
+                <p>纸巾余量</p>
+                <p>
+                  {{userData.deposit/100 == 0?'无纸巾暂无收益':(userData.deposit/100)+'元 | '+(userData.deposit/100/0.3)+'包'}}
+                </p>
             </div>
         </div>
         <div class="title">
             <img src="../image/icon/lb.png" alt="">
-            <span style="vertical-align: middle">设备列表（<span class="number">12台</span>）</span>
+            <span style="vertical-align: middle">设备列表（<span class="number">{{data.deviceCount}}台</span>）</span>
         </div>
         <div class="ml_shebei">
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
+            <router-link v-for=" item in list.data" :to="{ path: '/detail/'+ item.id}" class="section1-banner">
                 <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
-                    <img src="../image/icon/jt.png" alt="">
-                </div>
-            </router-link>
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
-                <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
-                    <img src="../image/icon/jt.png" alt="">
-                </div>
-            </router-link>
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
-                <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
-                    <img src="../image/icon/jt.png" alt="">
-                </div>
-            </router-link>
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
-                <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
-                    <img src="../image/icon/jt.png" alt="">
-                </div>
-            </router-link>
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
-                <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
-                    <img src="../image/icon/jt.png" alt="">
-                </div>
-            </router-link>
-            <router-link :to="{ name: '详情页'}" class="section1-banner">
-                <div class="shebei">
-                    <p>1号纸巾机</p>
-                    <p>有纸巾</p>
-                    <span>地址：北京市东城区崇文门大街</span>
+                    <p>{{item.building}}</p>
+                    <p>
+                      {{
+                      item.washStatus === 0?'出货成功':
+                      item.washStatus === 1?'出货失败':
+                      item.washStatus === 2?'设备异常':
+                      item.washStatus === 16?'设备正常':
+                      item.washStatus === 17?'设备缺货':
+                      '设备异常'
+                      }}
+                    </p>
+                    <span>地址：{{item.address}}</span>
                     <img src="../image/icon/jt.png" alt="">
                 </div>
             </router-link>
@@ -110,7 +82,16 @@
                     section4: {},
                     swiper: []
                 },
-                loading: true
+              list:[],
+              data:{
+                deviceCount:0,
+                alltotal:0,
+                todayTotal:0,
+                yesterdayTotal:0,
+                wallet:0
+              },
+                loading: true,
+              userData:this.Local.getLocal('user')
             }
         },
 
@@ -120,9 +101,18 @@
                 url: '/api/v1/device/userDevice'
             }).then((response) => {
                 // this.Local.setLocal('user',response.data.data)
-                this.$router.replace({
-                    path: '/'
-                })
+                if(response.data.code = 1000){
+                  this.list = response.data
+                }
+            })
+            this.$api({
+                method: 'get',
+                url: '/api/v1/rptBilling'
+            }).then((response) => {
+                // this.Local.setLocal('user',response.data.data)
+                if(response.data.code = 1000){
+                  this.data = response.data.data
+                }
             })
         }
     }
@@ -133,7 +123,6 @@
     .index {
         width: 100%;
         padding-bottom: 14vw;
-        background-color: #F8FCFF;
     }
 
     .top_yue {
@@ -143,6 +132,14 @@
         background-color: rgb(135, 204, 90);
         color: white;
         padding-bottom: 6vw;
+      position: relative;
+      >img{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 6vw;
+        top: 14vw;
+      }
         > p:first-child {
             font-size: 14px;
         }

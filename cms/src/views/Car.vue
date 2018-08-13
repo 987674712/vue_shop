@@ -6,75 +6,27 @@
     </v-header>
 
     <div class="ml_shebei">
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
+      <router-link v-for=" item in list.data" :to="{ path: '/detail/'+ item.id}" class="section1-banner">
         <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
+          <p>{{item.building}}</p>
+          <p>
+            {{
+            item.washStatus === 0?'出货成功':
+            item.washStatus === 1?'出货失败':
+            item.washStatus === 2?'电源未接通':
+            item.washStatus === 16?'设备正常':
+            item.washStatus === 17?'设备缺货':
+            '设备异常'
+            }}
+          </p>
+          <span>地址：{{item.address}}</span>
           <img src="../image/icon/jt.png" alt="">
         </div>
       </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '详情页'}" class="section1-banner">
-        <div class="shebei">
-          <p>1号纸巾机</p>
-          <p>有纸巾</p>
-          <span>地址：北京市东城区崇文门大街</span>
-          <img src="../image/icon/jt.png" alt="">
-        </div>
-      </router-link>
-      <router-link :to="{ name: '管理页'}" class="section1-banner">
+      <router-link :to="{ path: '/search/:id'}" class="section1-banner">
         <mt-button style="width: 100%;margin-top: 10px" class="btn" type="primary">新增设备</mt-button>
       </router-link>
     </div>
-
 
     <!--<v-footer/>-->
   </div>
@@ -90,13 +42,28 @@
       'v-footer': Footer
     },
 
+    data() {
+      return {
+        list:[],
+        data:{},
+        loading: true
+      }
+    },
     computed: {
       count() {
         return this.$store.state.detail.count
       }
     },
     mounted() {
-
+      this.$api({
+        method: 'get',
+        url: '/api/v1/device/userDevice'
+      }).then((response) => {
+        // this.Local.setLocal('user',response.data.data)
+        if(response.data.code = 1000){
+          this.list = response.data
+        }
+      })
     }
 
   }

@@ -3,7 +3,7 @@ import store from '@/vuex/store.js'
 import router from '../router'
 
 const api = axios.create();
-api.defaults.baseURL = 'http://zhijin.97reader.com';
+api.defaults.baseURL = 'http://www.nazoubei.com';
 // api.defaults.params = {userId:localStorage.getItem('userId')};
 // api.defaults.data = {userId:localStorage.getItem('userId')};
 // api.defaults.timeout = 5000;
@@ -18,13 +18,28 @@ api.interceptors.request.use(function (config) {
     // if(store.state.login.token) {
     //   config.headers.Authorization = `token ${store.state.login.token}`;
     // }
+  function randomString(len) {
+    len = len || 32;
+    let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    let maxPos = $chars.length;
+    let pwd = '';
+    for (let i = 0; i < len; i++) {
+      pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+  }
+  let appId = randomString(32);
+  let nonce = randomString(32);
+  config.headers.appId = appId;
+  config.headers.nonce = nonce;
+  config.headers.sign = md5(appId+nonce+'nazoubeicom').toUpperCase();
   if(config.method === 'get'){
-    if(localStorage.getItem('user')){
+    if(localStorage.getItem('user')&&localStorage.getItem('user')!== 'undefined'){
       config.params = Object.assign({userId:JSON.parse(localStorage.getItem('user')).id},config.params)
     }
   }
   if(config.method === 'post'){
-    if(localStorage.getItem('user')){
+    if(localStorage.getItem('user')&&localStorage.getItem('user')!== 'undefined'){
       config.data = Object.assign({userId:JSON.parse(localStorage.getItem('user')).id},config.data)
     }
   }

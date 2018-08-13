@@ -14,24 +14,24 @@
       <div class="chose-view">
         <h1 class="chose-view-title">
           {{datas.name}}
-          <span>(已选 公益款)</span>
+          <!--<span>(已选 公益款)</span>-->
         </h1>
+        <!--<p class="chose-view-intro">{{datas.intro}}</p>-->
+      </div>
+    </section>
+    <div class="amount">
+      <p>
+        ￥
         <span>{{datas.amount/100}}元</span>
-        <p class="chose-view-intro">{{datas.intro}}</p>
-      </div>
-      <!-- 添加空函数 解决Safari浏览器 :active无效 -->
-      <div class="chose-mychosed" ontouchstart="">
-        <div class="colChose">
-        <span class="active">公益款</span>
-        </div>
-      </div>
+      </p>
+    </div>
+    <section class="content" style="padding: 20px 4vw ">
+      {{datas.desp}}
+      <!--<div class="img-wrap" v-for="k in swiper">-->
+        <!--<img :src="k">-->
+      <!--</div>-->
     </section>
-    <section class="content">
-      <div class="img-wrap" v-for="k in swiper">
-        <img :src="k">
-      </div>
-    </section>
-    <v-baseline/>
+    <!--<v-baseline/>-->
     <footer class="footer">
       <router-link :to="{name:'首页'}" class="footer-index">
         <i class="icon-index"></i>
@@ -83,10 +83,10 @@ export default {
         .confirm
         (
           `商品名称:${product[0].title}</br>` +
-          `价格:${product[0].price/100}元</br>` +
+          `价格:${product[0].price/100}元</br>`
           // `款式:${product[0].size}</br>` +
-          `规格:公益款</br>` +
-          `商品ID:${product[0].id}</br>`
+          //`规格:公益款</br>` +
+          //`商品ID:${product[0].id}</br>`
         )
         .then(action => {      //点击成功执行这里的函数
           this.$router.push({ path: '/car/pay/'+ this.$route.params.id})
@@ -164,13 +164,27 @@ export default {
         transform: scale(1.3);
       }
     }
-  }.chose {
+  }
+  .amount{
+    padding: 0 3vw;
+    p{
+      color: #EC603C;
+      padding: 3vw 0;
+      font-size: 20px;
+      font-weight: 600;
+      border-bottom: 1px solid #DDDDDD;
+      >span{
+        font-size: 26px;
+      }
+    }
+  }
+  .chose {
      padding: 3vw;
-
+       background-color: white;
      .chose-view {
        > h1 {
          .fz(font-size,36);
-         color: #2c3e50;
+         color: #333333;
          > span {
            color: rgb(238, 113, 80);
          }
@@ -183,35 +197,6 @@ export default {
        }
 
      }
-
-     .chose-mychosed {
-
-       background-color: #fff;
-       > div {
-         padding-top: 20px;
-         display: -ms-flex;
-         display: -webkit-box;
-         display: -ms-flexbox;
-         display: flex;
-
-         span {
-           .fz(font-size,26);
-           padding: 6px 10px;
-           border: 1px solid rgb(111, 111,111);
-           margin-right: 6vw;
-           color: rgb(111, 111, 111);
-           &.active,
-           &:active {
-             color: @cl;
-             border-color: @cl;
-             -webkit-transform: scale(1.1);
-             transform: scale(1.1);
-           }
-
-         }
-       }
-     }
-
      .footer {
        width: 100%;
        display: -webkit-flex;
@@ -369,7 +354,7 @@ export default {
       height: 14vw;
 
       color: #fff;
-      background-color: @cl;
+      background-color: #EC603C;
       letter-spacing: 0.2vw;
       &:active {
         background-color: #ff7d00;
@@ -379,5 +364,6 @@ export default {
 .detail {
   width: 100%;
   padding-bottom: 14vw;
+  background-color: #F2F2F2;
 }
 </style>

@@ -1,19 +1,18 @@
 <template lang="html">
   <section class="section4">
-    <h2 class="section4-title">
-      商品列表
-      <!--<i class="icon-right"></i>-->
-    </h2>
-    <ul class="section4-list">
-      <li v-for="k in list" :key='k.id'>
-        <router-link :to="{path:'/detail/'+k.id}">
-          <img v-lazy="k.icon">
-          <p>{{k.desp}}</p>
-        </router-link>
-        <h3>{{k.name}}</h3>
-        <span>￥{{k.amount/100}}</span>
-      </li>
-    </ul>
+    <div style="padding: 0 10px 20px">
+      <p class="section4-title">
+        商品列表
+      </p>
+      <ul class="section4-list">
+        <li v-for="k in list" :key='k.id'>
+          <router-link :to="{path:'/detail/'+k.id}">
+            <img v-lazy="k.icon">
+            <p>{{k.name}}<span>￥{{k.amount/100}}</span></p>
+          </router-link>
+        </li>
+      </ul>
+    </div>
     <!--<router-link :to="{name:'分类页'}" class="section4-banner">-->
       <!--<img v-lazy="banner">-->
     <!--</router-link>-->
@@ -48,10 +47,12 @@ export default {
   .section4-title {
     .bt();
     text-align: center;
-    .fz(font-size, 40);
-    padding: 4vw 0;
+    .fz(font-size, 34);
+    color: #333333;
+    padding: 2vw 0;
     position: relative;
     background-color: #ffffff;
+    border-bottom: 1px solid #EEEEEE;
     i {
       position: absolute;
       right: 6vw;
@@ -65,39 +66,48 @@ export default {
   }
 
   .section4-list {
-    width: 100%;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     overflow: hidden;
+    padding: 10px 0 10px 10px;
     li {
       width: 50%;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       float: left;
-      padding: 0 3vw;
+      padding: 0 3vw 0 0;
       > a {
         display: block;
+        border-radius: 5px;
+        overflow: hidden;
         width: 100%;
         position: relative;
         img {
           display: block;
-          height: 87.8vw;
+          width: 100%;
         }
         p {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
           position: absolute;
+          color: white;
           bottom: 0;
           left: 0;
           width: 100%;
-          background-color: gold;
+          background-color: black;
+          opacity: 0.6;
           -webkit-box-sizing: border-box;
           box-sizing: border-box;
           padding: 1.2vw 2vw;
+          > span {
+          display: inline-block;
+          color: #EB5F3C;
+            margin-left: .5em;
+        }
         }
       }
 
@@ -105,11 +115,7 @@ export default {
         padding-top: 3vw;
         .fz(font-size,40);
       }
-      > span {
-        display: inline-block;
-        padding-bottom: 3vw;
-        color: #b4282d;
-      }
+
     }
   }
 

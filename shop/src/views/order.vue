@@ -28,8 +28,10 @@
             </div>
           </div>
           <div>
+            <span style="float: left;font-size:14px;line-height: 27px">{{item.createTime}}</span>
             &nbsp;
             <mt-button @click="orderFrom(item.id)" :style="item.status === 3?'display:inline-block':'display:none'" class="btn" size="small">确认收货</mt-button>
+            <mt-button @click="toIndex" :style="item.status === 3?'display:none':'display:inline-block'" class="btn" size="small">再次购买</mt-button>
           </div>
         </li>
         <!--</router-link>-->
@@ -76,6 +78,11 @@
           //点击取消执行这里的函数
         })
       },
+      toIndex:function(){
+        this.$router.replace({
+          path: '/'
+        })
+      },
       getPages:function () {
         this.loading = true;
         this.$api({
@@ -87,6 +94,7 @@
         }).then((response) => {
           if (response.data.code === 1000) {
             for (let i = 0; i < response.data.data.length; i++) {
+              response.data.data[i].createTime = this.Local.getTime(response.data.data[i].createTime)
               this.list.push(response.data.data[i]);
             }
             if(response.data.data.length > 0){
@@ -131,6 +139,7 @@
     li {
       border-top: 1px solid #e7e7e7;
       > div:first-child {
+        background-color: #F2F2F2;
         color: #666666;
         line-height: 2em;
         padding: 0 10px;
@@ -144,7 +153,8 @@
       }
       > div:nth-child(2) {
         padding: 10px 10px;
-        background-color: #f5f5f5;
+        background-color: white;
+        border-bottom: 1px solid #E0E0E0;
         overflow: hidden;
         display: flex;
         img {

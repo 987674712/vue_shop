@@ -4,50 +4,39 @@
         <v-header class="header">
             <h1 slot="title">我的团队</h1>
         </v-header>
-        <router-link class="my-indent" :to="{ name: '收益页'}">
+        <router-link class="my-indent" :to="{ name: ''}">
             <div class="top_yue">
                 <p>团队总设备（台）</p>
-                <p>38</p>
-                <p>我的团队</p>
+                <p>{{data.deviceCount?data.deviceCount:0}}</p>
+                <!--<p>我的团队</p>-->
+              <p></p>
             </div>
         </router-link>
+
+      <router-link class="my-indent" :to="{ name: '活动页'}">
+        <span class="toActive">
+          活动规则
+        </span>
+      </router-link>
         <div class="top_all">
             <div>
                 <p>团队成员设备(台)</p>
-                <p>55</p>
+                <p>{{data.deviceCount?data.deviceCount-data.deviceCountMy:0}}</p>
             </div>
             <div>
-                <p>每增加一台奖励(元)</p>
-                <p>10</p>
+                <p>每增加十台奖励(元)</p>
+                <p>400</p>
             </div>
         </div>
         <div class="title">
             <!--<img src="../image/icon/lb.png" alt="">-->
-            <span style="vertical-align: middle">我的团队成员：4人</span>
+            <span style="vertical-align: middle">我的团队成员：{{data.userCount?data.userCount:0}}人</span>
         </div>
         <div class="ml_shebei">
-            <router-link :to="{ name: ''}" class="section1-banner">
+            <router-link v-for="item in data.userList" :to="{ name: ''}" class="section1-banner">
                 <div class="shebei">
-                    <p>张三</p>
-                    <p>2台</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>马先丰</p>
-                    <p>16台</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>赵四</p>
-                    <p>8台</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>林依然</p>
-                    <p>168台</p>
+                    <p>{{item.userName}}</p>
+                    <p>{{item.deviceCount}}台</p>
                 </div>
             </router-link>
         </div>
@@ -67,19 +56,20 @@
         },
         data() {
             return {
-                datas: {
-                    section1: {},
-                    section2: {},
-                    section3: {},
-                    section4: {},
-                    swiper: []
-                },
+              data:{},
                 loading: true
             }
         },
 
         beforeCreate() {
-
+          this.$api({
+            method: 'get',
+            url: `/api/v1/user/team/${this.Local.getLocal('user').id}`
+          }).then((response) => {
+            if(response.data.code = 1000){
+              this.data = response.data.data
+            }
+          })
         }
     }
 </script>
@@ -90,7 +80,11 @@
         width: 100%;
         padding-bottom: 14vw;
     }
-
+    .toActive{
+      position: absolute;
+      right: 10px;top: 15.4vw;
+      color: white;
+    }
     .top_yue {
         text-align: center;
         padding: 10px 0;
@@ -99,7 +93,7 @@
         color: white;
         padding-bottom: 6vw;
         > p:first-child {
-            font-size: 14px;
+            font-size: 18px;
         }
         > p:nth-child(2) {
             font-size: 24px;

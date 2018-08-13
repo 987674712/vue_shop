@@ -40,12 +40,27 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>公益纸巾机</title>
-
-
+  <script>
+    //禁止分享页面
+    function onBridgeReady(){
+      WeixinJSBridge.call('hideOptionMenu');
+    }
+    if (typeof WeixinJSBridge == "undefined"){
+      if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+      }else if (document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+      }
+    }else{
+      onBridgeReady();
+    }
+  </script>
+  <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
 </head>
-
 <body ontouchstart="" style="background-color: rgb(242,242,242)!important;">
   <div id="app"></div>
  </body>
 
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </html>

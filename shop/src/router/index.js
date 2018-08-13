@@ -3,19 +3,35 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 //按需加载,当渲染其他页面时才加载其组件,并缓存,减少首屏加载时间
-const Index = resolve => require(['@/views/Index.vue'], resolve)
-const Category = resolve => require(['@/views/Category.vue'], resolve)
-const CategoryMain = resolve => require(['@/components/category/main.vue'], resolve)
-const Car = resolve => require(['@/views/Car.vue'],resolve)
-const User = resolve => require(['@/views/User.vue'], resolve)
-const Detail = resolve => require(['@/views/Detail.vue'], resolve)
-const Search = resolve => require(['@/views/Search.vue'], resolve)
-const Pay = resolve => require(['@/components/car/pay/pay.vue'], resolve)
-const Login = resolve => require(['@/views/login.vue'], resolve)
-const Order = resolve => require(['@/views/Order.vue'], resolve)
-const Address = resolve => require(['@/views/Address.vue'], resolve)
-const bindMobile = resolve => require(['@/views/bindMobile.vue'], resolve)
-const orderDetail = resolve => require(['@/views/orderDetail.vue'], resolve)
+// const Index = resolve => require(['@/views/Index.vue'], resolve)
+// const Category = resolve => require(['@/views/Category.vue'], resolve)
+// const CategoryMain = resolve => require(['@/components/category/main.vue'], resolve)
+// const Car = resolve => require(['@/views/Car.vue'],resolve)
+// const User = resolve => require(['@/views/User.vue'], resolve)
+// const Detail = resolve => require(['@/views/Detail.vue'], resolve)
+// const Search = resolve => require(['@/views/Search.vue'], resolve)
+// const Pay = resolve => require(['@/components/car/pay/pay.vue'], resolve)
+// const Login = resolve => require(['@/views/login.vue'], resolve)
+// const Order = resolve => require(['@/views/Order.vue'], resolve)
+// const Address = resolve => require(['@/views/Address.vue'], resolve)
+// const bindMobile = resolve => require(['@/views/bindMobile.vue'], resolve)
+// const orderDetail = resolve => require(['@/views/orderDetail.vue'], resolve)
+// const yaoqing = resolve => require(['@/views/yaoqing.vue'], resolve)
+import Index from '@/views/Index.vue'
+import Category from '@/views/Category.vue'
+import CategoryMain from '@/components/category/main.vue'
+import Car from '@/views/Car.vue'
+import User from '@/views/User.vue'
+import Detail from '@/views/Detail.vue'
+import Search from '@/views/Search.vue'
+import Pay from '@/components/car/pay/pay.vue'
+import Login from '@/views/login.vue'
+import Order from '@/views/Order.vue'
+import Address from '@/views/Address.vue'
+import bindMobile from '@/views/bindMobile.vue'
+import orderDetail from '@/views/orderDetail.vue'
+import yaoqing from '@/views/yaoqing.vue'
+import active from '@/views/active.vue'
 
 
 export default new Router({
@@ -79,6 +95,14 @@ export default new Router({
       path: '/orderDetail/:id',
       name: '订单详情页',
       component: orderDetail
+    },{
+      path: '/yaoqing',
+      name: '邀请码页',
+      component: yaoqing
+    },{
+      path: '/active',
+      name: '活动页',
+      component: active
     }
   ]
 })

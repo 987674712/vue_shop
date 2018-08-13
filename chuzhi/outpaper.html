@@ -5,23 +5,24 @@
     <title>纸巾机服务</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <style>
-        .line2{position:absolute;left: 183px;top: 10px;height: 1px;width: 43px;background: #979797;z-index: 999;}*{margin:0;padding:0;border:0}body{position:absolute;width:100%;height:100%;text-align:center}#pos-area{background-color:#009DDC;margin-bottom:10px;width:100%;overflow:scroll;text-align:left;color:#fff}#demo{padding:8px;font-size:small}#btn-area{height:50px;position:fixed;bottom:0;width:100%;padding-bottom:10px}button{margin-bottom:10px;padding:12px 8px;width:42%;border-radius:8px;background-color:#009DDC;color:#fff}body{background:url(images/bg2.png) no-repeat top center #000;-webkit-background-size:100%;background-size:100%}.zj{width:66px;height:75px;margin:100px auto 11px auto;background:url(images/out.png) no-repeat top center transparent}.cred{color:#F04E64}.ewm img{display:block;width:197px;height:197px;border:2px solid #fff}.copy{font-size:16px;color:#fff;letter-spacing:.17px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;width:162px;margin:79px auto 0 auto;position:relative;height:30px;display:block}.line{position:absolute;left:-63px;top:10px;height:1px;width:43px;background:#979797;z-index:999}.title{padding-top:100px;font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:22px}.title2{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}.title3{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}
+        /*.line2{position:absolute;left: 183px;top: 10px;height: 1px;width: 43px;background: #979797;z-index: 999;}*{margin:0;padding:0;border:0}body{position:absolute;width:100%;height:100%;text-align:center}#pos-area{background-color:#009DDC;margin-bottom:10px;width:100%;overflow:scroll;text-align:left;color:#fff}#demo{padding:8px;font-size:small}#btn-area{height:50px;position:fixed;bottom:0;width:100%;padding-bottom:10px}button{margin-bottom:10px;padding:12px 8px;width:42%;border-radius:8px;background-color:#009DDC;color:#fff}body{background:url(images/bg2.png) no-repeat top center #000;-webkit-background-size:100%;background-size:100%}.zj{width:66px;height:75px;margin:100px auto 11px auto;background:url(images/out.png) no-repeat top center transparent}.cred{color:#F04E64}.ewm img{display:block;width:197px;height:197px;border:2px solid #fff}.copy{font-size:16px;color:#fff;letter-spacing:.17px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;width:162px;margin:79px auto 0 auto;position:relative;height:30px;display:block}.line{position:absolute;left:-63px;top:10px;height:1px;width:43px;background:#979797;z-index:999}.title{padding-top:100px;font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:22px}.title2{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}.title3{font-size:16px;color:#FFF;letter-spacing:.37px;text-shadow:0 2px 4px rgba(0,0,0,.5);text-align:center;line-height:32px}*/
     </style>
 </head>
 <body>
-<div class="zj"></div>
-<p class="title3">正在出纸</p>
+<!--<div class="zj"></div>-->
+<!--<p class="title3">正在出纸</p>-->
 <!--<p class="title2">设备未开机</p>-->
-<p class="copy">
-    <span class="cred">共享纸巾</span>流量财富商机
-    <span class="line"></span>
-    <span class="line2"></span>
-</p>
+<!--<p class="copy">-->
+    <!--<span class="cred">共享纸巾</span>流量财富商机-->
+    <!--<span class="line"></span>-->
+    <!--<span class="line2"></span>-->
+<!--</p>-->
 <!--<div id="btn-area">-->
     <!--<button onClick="geolocation.getLocation(showPosition, showErr, options)"></button>-->
     <!--<button onClick="">立即购买（0.5元）</button>-->
 <!--</div>-->
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
 <script type="text/JavaScript">
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -29,16 +30,36 @@
         if (r != null) return unescape(r[2]);
         return null;
     }
+    function randomString(len) {
+        len = len || 32;
+        let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        let maxPos = $chars.length;
+        let pwd = '';
+        for (let i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+    let appId = randomString(32);
+    let nonce = randomString(32);
+    let headers = {}
+    headers.appId = appId;
+    headers.nonce = nonce;
+    headers.sign = md5(appId+nonce+'nazoubeicom').toUpperCase();
             $.ajax({
                 type: 'GET',
-                url: 'http://zhijin.97reader.com/api/v1/device/outpaper',
+                url: 'http://www.nazoubei.com/api/v1/device/outpaper',
                 data: {
                     userId:getQueryString('userId'),
                     orderId:getQueryString('orderId')
                 },
                 dataType: 'json',
+                headers:headers,
                 success: function(data){
-                    console.log(data)
+                    // if (data.code === 1000) {
+                        window.location.href = 'https://wxh5.lianka123.com/?key=67730XZizPWaEpqjJiog1TWKdx160GQMJQV8BBAaaDMIs04Nselg7A'
+                        // console.log(data)
+                    // }
                 },
                 error: function(xhr, type){
 

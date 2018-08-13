@@ -5,30 +5,20 @@
             <h1 slot="title">提现记录</h1>
         </v-header>
         <div class="ml_shebei">
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>2018-07-16<br/><a href="javascript:">18:16</a></p>
-                    <p>-200</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>2018-07-16<br/><a href="javascript:">18:16</a></p>
-                    <p>-200</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>2018-07-16<br/><a href="javascript:">18:16</a></p>
-                    <p>-200</p>
-                </div>
-            </router-link>
-            <router-link :to="{ name: ''}" class="section1-banner">
-                <div class="shebei">
-                    <p>2018-07-16<br/><a href="javascript:">18:16</a></p>
-                    <p>-200</p>
-                </div>
-            </router-link>
+          <ul
+            class="ml_shebei"
+            v-infinite-scroll="getPages"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="10">
+            <li v-for="item in list" class="section1-banner">
+              <div class="shebei">
+                <p>到账：{{item.amount/100}}元&nbsp;&nbsp;&nbsp;手续费：{{item.poundage/100}}元<br/>
+                  <a href="javascript:">{{item.createTime}}</a>
+                </p>
+                <p>-{{(item.amount+item.poundage)/100}}元</p>
+              </div>
+            </li>
+          </ul>
         </div>
         <!--<v-baseline></v-baseline>-->
         <!--<v-footer></v-footer>-->
@@ -45,7 +35,57 @@
             'v-baseline': Baseline,
             'v-footer': Footer,
             'v-header': Header,
+        },
+      data(){
+        return{
+          list:[
+
+          ],
+          page:1,
+          loading:false
         }
+      },
+
+      methods:{
+        getPages:function (){
+          this.loading = true;
+          this.$api({
+            method: 'get',
+            url: `/api/v1/user/transferList?userId=`+this.Local.getLocal('user').id,
+            params:{
+              page:this.page
+            }
+          }).then((response) => {
+            // this.Local.setLocal('user',response.data.data)
+            if(response.data.code = 1000){
+              for (var i = 0 ;i < response.data.data.length;i++) {
+                response.data.data[i].createTime = this.Local.getTime(response.data.data[i].createTime)
+                this.list.push(response.data.data[i]);
+                console.log(this.list)
+              }
+              if(response.data.data.length > 0){
+                this.loading = false;
+              }
+              this.page++;
+            }
+          })
+        }
+      },
+      beforeCreate () {
+        // /api/v1/user/transferList
+        // this.$api({
+        //   method: 'get',
+        //   url: `/api/v1/user/transferList?userId=`+this.Local.getLocal('user').id
+        // }).then((response) => {
+        //   // this.Local.setLocal('user',response.data.data)
+        //   if(response.data.code = 1000){
+        //     for (var i = 0 ;i < response.data.data.length;i++) {
+        //       response.data.data[i].createTime = this.Local.getTime(response.data.data[i].createTime)
+        //     }
+        //     this.list = response.data.data
+        //   }
+        // })
+      }
     }
 </script>
 
